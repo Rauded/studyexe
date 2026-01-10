@@ -219,6 +219,10 @@ export function WhoNotForSection() {
 
     return (
         <section className="py-20 px-4 relative overflow-hidden">
+            {/* Big Sad Face decoration */}
+            <div className="absolute top-1/2 -right-20 lg:right-10 -translate-y-1/2 opacity-10 pointer-events-none select-none">
+                <MaterialIcon name="sentiment_very_dissatisfied" className="text-red-500 !text-[300px]" />
+            </div>
 
             <div className="max-w-4xl mx-auto text-center relative z-10">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-red-500/20 bg-red-500/10 text-red-400 text-xs font-medium tracking-wide uppercase mb-6">
