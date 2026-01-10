@@ -2,6 +2,7 @@ import {
     Navbar,
     HeroSection,
     StatsSection,
+    WhoNotForSection,
     HowItWorksSection,
     FeaturesSection,
     TestimonialsSection,
@@ -30,6 +31,7 @@ export default async function LandingPage() {
             <Navbar user={user} />
             <HeroSection />
             <StatsSection />
+            <WhoNotForSection />
             <HowItWorksSection />
             <FeaturesSection />
             <TestimonialsSection />

@@ -205,6 +205,46 @@ export function StatsSection() {
     );
 }
 
+
+// Who This Is NOT For Section
+export function WhoNotForSection() {
+    const notForList = [
+        "People with good grades",
+        "Teacher's pets",
+        "Those who never struggled",
+        "Morning people who enjoy 5am runs",
+        "People who color-code notes for fun",
+        "Anyone satisfied with mediocrity"
+    ];
+
+    return (
+        <section className="py-20 px-4 relative overflow-hidden">
+
+            <div className="max-w-4xl mx-auto text-center relative z-10">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-red-500/20 bg-red-500/10 text-red-400 text-xs font-medium tracking-wide uppercase mb-6">
+                    <Skull className="w-3 h-3" />
+                    Warning: Read Before Downloading
+                </div>
+
+                <h2 className="text-3xl md:text-4xl font-semibold mb-12 text-white tracking-tight">
+                    Who this app is <span className="text-red-500">NOT</span> for
+                </h2>
+
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {notForList.map((item, i) => (
+                        <div key={i} className="group flex items-center gap-3 p-4 rounded-xl bg-zinc-900/40 border border-white/5 hover:border-red-500/30 hover:bg-red-500/5 transition-all duration-300 transform hover:-translate-y-1">
+                            <div className="w-8 h-8 rounded-full bg-red-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-red-500/20 transition-colors">
+                                <span className="text-red-500 text-sm font-bold">✕</span>
+                            </div>
+                            <span className="text-muted-foreground font-light text-sm text-left group-hover:text-red-200/80">{item}</span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+}
+
 // How It Works Section
 export function HowItWorksSection() {
     const steps = [
