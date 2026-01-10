@@ -14,6 +14,7 @@ import {
     Check,
     ChevronRight,
     LogOut,
+    Skull,
     User as UserIcon,
 } from "lucide-react";
 import { User } from "@supabase/supabase-js";
@@ -95,7 +96,7 @@ export function Navbar({ user }: { user: User | null }) {
                                     <Button variant="ghost" size="sm" className="text-white hover:text-white">Sign in</Button>
                                 </Link>
                                 <Button size="sm" className="bg-white hover:bg-zinc-100 text-black border-none">
-                                    Download Free
+                                    Download
                                 </Button>
                             </>
                         )}
@@ -171,7 +172,6 @@ export function HeroSection() {
                         <span className="font-light">12,847 active warriors</span>
                     </span>
                     <span className="text-white font-medium">8.4M hours reclaimed</span>
-                    <span className="font-light">Free forever tier</span>
                 </div>
             </div>
         </section>
@@ -604,7 +604,7 @@ export function GlobalStatsSection() {
                         <div className="w-64 h-64 md:w-80 md:h-80 mx-auto rounded-full border-4 border-white/20 flex items-center justify-center">
                             <div className="w-48 h-48 md:w-60 md:h-60 rounded-full border-2 border-white/30 flex items-center justify-center">
                                 <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-white/5 border border-white/40 flex items-center justify-center">
-                                    <MaterialIcon name="public" className="text-white" size="xl" />
+                                    <Skull className="w-16 h-16 text-white" />
                                 </div>
                             </div>
                         </div>
@@ -695,11 +695,11 @@ export function CTASection() {
 
                         <Button size="lg" className="bg-white hover:bg-zinc-100 text-black text-lg px-8 gap-2">
                             <MaterialIcon name="download" className="text-black" />
-                            Download StudyEXE Free
+                            Download StudyEXE
                         </Button>
 
                         <p className="text-sm text-muted-foreground mt-4">
-                            No credit card required • Free forever tier • 50K+ warriors
+                            No credit card required • 50K+ warriors
                         </p>
                     </div>
                 </div>
@@ -748,7 +748,7 @@ export function LandingFooter() {
                         <ul className="space-y-2 text-sm text-muted-foreground">
                             <li><a href="#" className="hover:text-foreground transition-colors">About</a></li>
                             <li><a href="#" className="hover:text-foreground transition-colors">Blog</a></li>
-                            <li><a href="#" className="hover:text-foreground transition-colors">Careers</a></li>
+                            <li><a href="mailto:apply@studyexe.com" className="hover:text-foreground transition-colors">Careers</a></li>
                         </ul>
                     </div>
                     <div>
