@@ -867,10 +867,6 @@ export function CTASection() {
                                 <MaterialIcon name="download" className="text-black" />
                                 Download StudyEXE
                             </Button>
-
-                            <p className="text-sm text-muted-foreground mt-4">
-                                50K+ warriors
-                            </p>
                         </div>
                     </div>
                 </ScrollAnimation>

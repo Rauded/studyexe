@@ -347,13 +347,12 @@ export function AsciiArtSection() {
     }, []);
 
     return (
-        <section className="bg-black overflow-hidden flex justify-center items-center relative min-h-screen" ref={containerRef}>
-            <canvas ref={canvasRef} className="cursor-crosshair max-w-full" />
-
-            <div className="absolute top-0 left-0 right-0 z-10 pointer-events-none pt-24">
-                <div className="max-w-4xl mx-auto text-center pointer-events-auto px-4">
+        <section className="bg-black overflow-hidden flex flex-col items-center relative" ref={containerRef}>
+            {/* CTA Content - Above ASCII Art */}
+            <div className="w-full pt-16 z-10">
+                <div className="max-w-4xl mx-auto text-center px-4">
                     <ScrollAnimation animation="scale-in">
-                        <div className="relative py-12 text-center">
+                        <div className="relative text-center">
                             <h2 className="text-5xl md:text-7xl font-bold mb-2 text-white tracking-tighter">Study.</h2>
                             <h2 className="text-5xl md:text-7xl font-bold mb-8 tracking-tighter">
                                 <span className="text-gradient">Or Die Trying.</span>
@@ -363,14 +362,13 @@ export function AsciiArtSection() {
                                 <MaterialIcon name="download" className="text-black" />
                                 Download StudyEXE
                             </Button>
-
-                            <p className="text-sm text-muted-foreground mt-4 font-mono">
-                                50K+ warriors
-                            </p>
                         </div>
                     </ScrollAnimation>
                 </div>
             </div>
+
+            {/* ASCII Art Canvas */}
+            <canvas ref={canvasRef} className="cursor-crosshair max-w-full" />
 
             {/* Fade to black at bottom */}
             <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none" />

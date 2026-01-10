@@ -456,10 +456,10 @@ function PricingSection() {
 
               <Button
                 className={`w-full mb-6 ${plan.popular
-                    ? "bg-red-600 hover:bg-red-700"
-                    : plan.current
-                      ? "bg-secondary"
-                      : "bg-secondary hover:bg-secondary/80"
+                  ? "bg-red-600 hover:bg-red-700"
+                  : plan.current
+                    ? "bg-secondary"
+                    : "bg-secondary hover:bg-secondary/80"
                   }`}
                 variant={plan.current ? "outline" : "default"}
               >
@@ -612,10 +612,6 @@ function CTASection() {
               <Download className="w-5 h-5" />
               Download StudyEXE Free
             </Button>
-
-            <p className="text-sm text-muted-foreground mt-4">
-              No credit card required • Free forever tier • 50K+ warriors
-            </p>
           </div>
         </div>
       </div>
