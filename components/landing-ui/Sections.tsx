@@ -245,6 +245,79 @@ export function WhoNotForSection() {
     );
 }
 
+// Reality Check Section
+export function RealityCheckSection() {
+    return (
+        <section className="py-24 px-4 bg-red-950/10 border-y border-red-900/20 relative overflow-hidden">
+            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150"></div>
+            <div className="max-w-4xl mx-auto text-center relative z-10">
+                <div className="inline-flex items-center gap-2 mb-6">
+                    <MaterialIcon name="timer" className="text-red-500 animate-pulse" size="lg" />
+                </div>
+
+                <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white tracking-tight">
+                    Time DOES NOT care about your <span className="text-red-500 underline decoration-red-900/50 decoration-4 underline-offset-4">potential</span>
+                </h2>
+
+                <p className="text-xl text-red-100/70 max-w-2xl mx-auto leading-relaxed font-light mb-10">
+                    Your "potential" means nothing if you don't execute. Every scroll, every distraction, every "I'll do it later" is a vote for a mediocre future.
+                </p>
+
+                <div className="inline-block p-6 rounded-2xl bg-red-500/5 border border-red-500/20">
+                    <p className="text-lg font-mono text-red-400">
+                        "The graveyard is full of people who had potential."
+                    </p>
+                </div>
+            </div>
+        </section>
+    );
+}
+
+// No Mercy Section
+export function NoMercySection() {
+    return (
+        <section className="py-24 px-4 bg-zinc-950 border-y border-red-900/20 relative">
+            <div className="max-w-5xl mx-auto">
+                <div className="grid md:grid-cols-2 gap-12 items-center">
+                    <div className="order-2 md:order-1">
+                        <div className="flex flex-col gap-6">
+                            {[
+                                { title: "Kernel-Level Blocking", desc: "We dig deep into the OS. You can't just 'close' the app." },
+                                { title: "No Task Manager", desc: "We block access to kill switches. You are locked in." },
+                                { title: "Restart Protection", desc: "Restart your computer? We launch immediately on startup." }
+                            ].map((item, i) => (
+                                <div key={i} className="flex gap-4 p-4 rounded-xl border border-red-500/10 bg-red-500/5 hover:bg-red-500/10 transition-colors">
+                                    <MaterialIcon name="lock" className="text-red-500 mt-1" />
+                                    <div>
+                                        <h3 className="text-white font-semibold mb-1">{item.title}</h3>
+                                        <p className="text-red-200/50 text-sm font-light">{item.desc}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="order-1 md:order-2 text-center md:text-left">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-red-500/20 bg-red-500/10 text-red-400 text-xs font-medium tracking-wide uppercase mb-6">
+                            <MaterialIcon name="shield" size="sm" />
+                            Strict Policy
+                        </div>
+                        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white tracking-tight">
+                            No Escape. <br />
+                            <span className="text-red-600">No Mercy.</span>
+                        </h2>
+                        <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+                            We don't care about your excuses. We care about your future. That's why we built a digital prison you can't escape from physically.
+                        </p>
+                        <Button className="bg-red-600 hover:bg-red-700 text-white border-none rounded-xl h-12 px-8">
+                            I Accept The Challenge
+                        </Button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+}
+
 // How It Works Section
 export function HowItWorksSection() {
     const steps = [

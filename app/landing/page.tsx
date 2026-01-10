@@ -3,11 +3,13 @@ import {
     HeroSection,
     StatsSection,
     WhoNotForSection,
-    HowItWorksSection,
     FeaturesSection,
-    TestimonialsSection,
-    PricingSection,
     GlobalStatsSection,
+    RealityCheckSection,
+    HowItWorksSection,
+    TestimonialsSection,
+    NoMercySection,
+    PricingSection,
     FAQSection,
     CTASection
 } from "@/components/landing-ui/Sections";
@@ -29,18 +31,26 @@ export default async function LandingPage() {
     return (
         <main className="min-h-screen bg-background text-foreground">
             <Navbar user={user} />
+            {/* Loop 1: Hook -> Warning -> Feature */}
             <HeroSection />
             <StatsSection />
             <WhoNotForSection />
-            <HowItWorksSection />
             <FeaturesSection />
+
+            {/* Loop 2: Hook -> Warning -> Feature */}
+            <GlobalStatsSection />
+            <RealityCheckSection />
+            <HowItWorksSection />
+
+            {/* Loop 3: Hook -> Warning -> Feature */}
             <TestimonialsSection />
+            <NoMercySection />
             <PricingSection
                 user={user}
                 products={products ?? []}
                 subscription={subscription}
             />
-            <GlobalStatsSection />
+
             <FAQSection />
             <CTASection />
         </main>
