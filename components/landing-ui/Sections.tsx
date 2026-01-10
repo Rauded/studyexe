@@ -424,19 +424,19 @@ export function FeaturesSection() {
             description: "Blocks apps at the kernel level. Task manager won't save you. Nothing will.",
         },
         {
+            icon: "psychology",
+            title: "Eye-Tracking Focus",
+            description: "Tracks your eyes to make sure you are locked in. Alerts you when you lose focus.",
+        },
+        {
             icon: "timer",
             title: "Pomodoro on Steroids",
             description: "Customizable focus sessions with breaks. Skip a break? Get punished.",
         },
         {
-            icon: "shield",
-            title: "Anti-Cheat System",
-            description: "Detects when you try to bypass. Adds penalty time. Resistance is futile.",
-        },
-        {
-            icon: "psychology",
-            title: "ADHD Mode",
-            description: "Special algorithms designed for the ADHD brain. We understand the struggle.",
+            icon: "schedule",
+            title: "Scheduled Lockdowns",
+            description: "Pre-schedule study sessions. Your past self will force your future self to work.",
         },
         {
             icon: "target",
@@ -444,9 +444,9 @@ export function FeaturesSection() {
             description: "Set daily, weekly, monthly goals. Watch your progress or face the consequences.",
         },
         {
-            icon: "schedule",
-            title: "Scheduled Lockdowns",
-            description: "Pre-schedule study sessions. Your past self will force your future self to work.",
+            icon: "shield",
+            title: "Anti-Cheat System",
+            description: "Detects when you try to bypass. Adds penalty time. Resistance is futile.",
         },
     ];
 
