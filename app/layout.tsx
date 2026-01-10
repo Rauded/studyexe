@@ -36,6 +36,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
         />
       </head>
       <body className={`${inter.className} bg-black font-light`}>
+        <div className="fixed inset-0 bg-matrix-grid z-[-1]" />
         <Navbar />
         <main
           id="skip"

@@ -200,14 +200,10 @@ const ASCII_ART = `
 
 interface Particle {
     char: string;
+    originChar: string;
     x: number;
     y: number;
-    originX: number;
-    originY: number;
-    vx: number;
-    vy: number;
     color: string;
-    size: number;
 }
 
 export function AsciiArtSection() {
@@ -219,9 +215,6 @@ export function AsciiArtSection() {
     const lineHeight = 10;
     const charSpacing = 6;
     const repelRadius = 80;
-    const repelStrength = 5;
-    const returnSpeed = 0.1;
-    const friction = 0.90;
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -267,14 +260,10 @@ export function AsciiArtSection() {
 
                     particles.push({
                         char,
+                        originChar: char,
                         x,
                         y,
-                        originX: x,
-                        originY: y,
-                        vx: 0,
-                        vy: 0,
-                        color,
-                        size: isDark ? 8 : 10
+                        color
                     });
                 }
             });
@@ -312,38 +301,26 @@ export function AsciiArtSection() {
 
             // Update and draw particles
             particles.forEach(p => {
-                // Physics
+                // Glitch effect logic
                 const dx = mouseX - p.x;
                 const dy = mouseY - p.y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
 
                 if (dist < repelRadius) {
-                    const force = (repelRadius - dist) / repelRadius;
-                    const angle = Math.atan2(dy, dx);
-                    const pushX = Math.cos(angle) * force * repelStrength;
-                    const pushY = Math.sin(angle) * force * repelStrength;
+                    // Inside hover radius: Glitch
+                    ctx.fillStyle = '#ffffff'; // Bright white highlight
 
-                    p.vx -= pushX;
-                    p.vy -= pushY;
+                    // Randomly swap char for glitch effect
+                    if (Math.random() < 0.3) { // 30% chance to flickr per frame
+                        p.char = ASCII_ART[Math.floor(Math.random() * ASCII_ART.length)] || '#';
+                    }
+                } else {
+                    // Outside radius: Reset
+                    p.char = p.originChar;
+                    ctx.fillStyle = p.color;
                 }
 
-                // Spring back home
-                const homeDx = p.originX - p.x;
-                const homeDy = p.originY - p.y;
-
-                p.vx += homeDx * returnSpeed;
-                p.vy += homeDy * returnSpeed;
-
-                // Friction
-                p.vx *= friction;
-                p.vy *= friction;
-
-                // Update pos
-                p.x += p.vx;
-                p.y += p.vy;
-
-                // Draw
-                ctx.fillStyle = p.color;
+                // Draw (no movement)
                 ctx.fillText(p.char, p.x, p.y);
             });
 

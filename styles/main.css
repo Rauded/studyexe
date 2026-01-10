@@ -197,13 +197,7 @@ html {
             rgba(255, 255, 255, 0.3) 0%,
             rgba(255, 255, 255, 0.05) 40%,
             rgba(255, 255, 255, 0.3) 100%);
-    animation: rotate-gradient 6s linear infinite;
-}
 
-@property --gradient-angle {
-    syntax: '<angle>';
-    initial-value: 135deg;
-    inherits: false;
 }
 
 @keyframes rotate-gradient {
