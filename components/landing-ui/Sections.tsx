@@ -111,22 +111,24 @@ export function HeroSection() {
     const rotatingWords = ["procrastination", "distractions", "excuses", "social media", "your weakness"];
 
     return (
-        <section className="pt-32 pb-20 px-4 relative overflow-hidden">
+        <section className="pt-32 pb-20 px-4 relative overflow-hidden aurora-bg">
             {/* Background gradient */}
-            <div className="absolute inset-0 bg-gradient-to-b from-zinc-800/30 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-b from-zinc-800/20 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute top-20 left-1/4 w-96 h-96 bg-white/[0.02] rounded-full blur-3xl animate-float-slow" />
+            <div className="absolute top-40 right-1/4 w-80 h-80 bg-white/[0.015] rounded-full blur-3xl animate-float-delayed" />
 
             <div className="max-w-5xl mx-auto text-center relative">
                 {/* Badge */}
-                <div className="inline-flex items-center gap-2 bg-secondary/80 border border-border rounded-full px-4 py-2 mb-8 animate-pulse-glow">
+                <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-8 animate-pulse-glow">
                     <MaterialIcon name="bolt" className="text-white" size="sm" />
-                    <span className="text-sm font-light">47,291 distractions killed this week</span>
+                    <span className="text-sm font-light tracking-wide">47,291 distractions killed this week</span>
                 </div>
 
                 {/* Main Headline */}
-                <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold leading-tight mb-6 text-white">
+                <h1 className="text-5xl sm:text-6xl md:text-7xl font-semibold leading-tight mb-6 text-white tracking-tight">
                     Kill your ADHD
                     <br />
-                    <span className="text-gradient">destroying </span>
+                    <span className="text-gradient-shimmer">destroying </span>
                     <span className="inline-block h-[1.15em] overflow-hidden align-bottom relative">
                         <span className="flex flex-col animate-text-rotate">
                             {rotatingWords.map((word, i) => (
@@ -145,17 +147,17 @@ export function HeroSection() {
                 </p>
 
                 {/* CTA Section */}
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
-                    <div className="flex items-center bg-secondary/60 rounded-xl p-2 w-full max-w-md border border-border">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
+                    <div className="flex items-center glass-strong rounded-2xl p-2 w-full max-w-md">
                         <div className="flex items-center gap-2 px-3 text-muted-foreground">
                             <MaterialIcon name="computer" size="sm" />
                         </div>
                         <input
                             type="email"
                             placeholder="Enter your email for download link"
-                            className="flex-1 bg-transparent border-none outline-none text-sm py-2 px-2 text-white"
+                            className="flex-1 bg-transparent border-none outline-none text-sm py-3 px-2 text-white placeholder:text-muted-foreground"
                         />
-                        <Button className="bg-white hover:bg-zinc-100 text-black gap-2">
+                        <Button className="bg-white hover:bg-zinc-100 text-black gap-2 btn-premium rounded-xl">
                             <MaterialIcon name="target" className="text-black" size="sm" />
                             Kill ADHD
                         </Button>
@@ -163,13 +165,13 @@ export function HeroSection() {
                 </div>
 
                 {/* Social Proof */}
-                <div className="flex items-center justify-center gap-6 mt-6 text-sm text-muted-foreground">
+                <div className="flex flex-wrap items-center justify-center gap-6 mt-8 text-sm text-muted-foreground">
                     <span className="flex items-center gap-2">
-                        <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                        12,847 active warriors
+                        <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+                        <span className="font-light">12,847 active warriors</span>
                     </span>
-                    <span className="text-white font-semibold">8.4M hours reclaimed</span>
-                    <span>Free forever tier</span>
+                    <span className="text-white font-medium">8.4M hours reclaimed</span>
+                    <span className="font-light">Free forever tier</span>
                 </div>
             </div>
         </section>
@@ -186,15 +188,15 @@ export function StatsSection() {
     ];
 
     return (
-        <section className="py-16 px-4 border-y border-border">
+        <section className="py-20 px-4 border-y border-border/50 glass">
             <div className="max-w-6xl mx-auto">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                     {stats.map((stat, i) => (
-                        <div key={i} className="text-center">
-                            <div className="text-4xl md:text-5xl font-bold text-foreground mb-2 text-white">
+                        <div key={i} className="text-center group">
+                            <div className="text-4xl md:text-5xl font-semibold text-white mb-2 tracking-tight group-hover:text-gradient transition-all duration-300">
                                 {stat.value}
                             </div>
-                            <div className="text-sm text-muted-foreground">{stat.label}</div>
+                            <div className="text-sm text-muted-foreground font-light">{stat.label}</div>
                         </div>
                     ))}
                 </div>
@@ -229,11 +231,11 @@ export function HowItWorksSection() {
     ];
 
     return (
-        <section id="how-it-works" className="py-24 px-4">
+        <section id="how-it-works" className="py-28 px-4">
             <div className="max-w-6xl mx-auto">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">How StudyEXE works</h2>
-                    <p className="text-muted-foreground">Download, configure, lock in, dominate life</p>
+                <div className="text-center mb-20">
+                    <h2 className="text-4xl md:text-5xl font-semibold mb-4 text-white tracking-tight">How StudyEXE works</h2>
+                    <p className="text-muted-foreground font-light">Download, configure, lock in, dominate life</p>
                 </div>
 
                 {/* Steps with connecting line */}
@@ -243,15 +245,15 @@ export function HowItWorksSection() {
 
                     <div className="grid md:grid-cols-4 gap-8">
                         {steps.map((step, i) => (
-                            <div key={i} className="text-center relative">
-                                <div className="relative z-10 inline-flex items-center justify-center w-16 h-16 rounded-full bg-secondary border border-border mb-4">
-                                    <MaterialIcon name={step.icon} className="text-white" size="lg" />
+                            <div key={i} className="text-center relative group">
+                                <div className="relative z-10 inline-flex items-center justify-center w-16 h-16 rounded-2xl glass group-hover:glow-subtle transition-all duration-300 mb-4">
+                                    <MaterialIcon name={step.icon} className="text-white icon-float" size="lg" />
                                 </div>
                                 <div className="mb-3">
-                                    <Badge variant="outline">0{i + 1}</Badge>
+                                    <Badge variant="outline" className="font-light">0{i + 1}</Badge>
                                 </div>
-                                <h3 className="text-xl font-semibold mb-2 text-white">{step.title}</h3>
-                                <p className="text-muted-foreground text-sm">{step.description}</p>
+                                <h3 className="text-xl font-medium mb-2 text-white">{step.title}</h3>
+                                <p className="text-muted-foreground text-sm font-light leading-relaxed">{step.description}</p>
                             </div>
                         ))}
                     </div>
@@ -297,24 +299,25 @@ export function FeaturesSection() {
     ];
 
     return (
-        <section id="features" className="py-24 px-4 bg-secondary/30">
-            <div className="max-w-6xl mx-auto">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">Weapons of Mass Focus</h2>
-                    <p className="text-muted-foreground">Every tool you need to annihilate distractions</p>
+        <section id="features" className="py-28 px-4 relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/[0.02] to-transparent pointer-events-none" />
+            <div className="max-w-6xl mx-auto relative">
+                <div className="text-center mb-20">
+                    <h2 className="text-4xl md:text-5xl font-semibold mb-4 text-white tracking-tight">Weapons of Mass Focus</h2>
+                    <p className="text-muted-foreground font-light">Every tool you need to annihilate distractions</p>
                 </div>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {features.map((feature, i) => (
                         <div
                             key={i}
-                            className="bg-card border border-border rounded-xl p-6 card-hover"
+                            className="card-premium card-spotlight p-6"
                         >
-                            <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center mb-4">
+                            <div className="w-12 h-12 rounded-xl glass flex items-center justify-center mb-4 icon-float">
                                 <MaterialIcon name={feature.icon} className="text-white" />
                             </div>
-                            <h3 className="text-lg font-semibold mb-2 text-white">{feature.title}</h3>
-                            <p className="text-muted-foreground text-sm">{feature.description}</p>
+                            <h3 className="text-lg font-medium mb-2 text-white">{feature.title}</h3>
+                            <p className="text-muted-foreground text-sm font-light leading-relaxed">{feature.description}</p>
                         </div>
                     ))}
                 </div>
