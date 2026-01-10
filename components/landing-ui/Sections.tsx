@@ -26,6 +26,7 @@ import type { Tables } from "@/types_db";
 import { SignOut } from "@/utils/auth-helpers/server";
 import { handleRequest } from "@/utils/auth-helpers/client";
 import Link from "next/link";
+import { ScrollAnimation } from "../ui/ScrollAnimation";
 
 type Subscription = Tables<'subscriptions'>;
 type Product = Tables<'products'>;
@@ -192,12 +193,14 @@ export function StatsSection() {
             <div className="max-w-6xl mx-auto">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                     {stats.map((stat, i) => (
-                        <div key={i} className="text-center group">
-                            <div className="text-4xl md:text-5xl font-semibold text-white mb-2 tracking-tight group-hover:text-gradient transition-all duration-300">
-                                {stat.value}
+                        <ScrollAnimation key={i} animation="fade-in-up" delay={i * 100}>
+                            <div className="text-center group">
+                                <div className="text-4xl md:text-5xl font-semibold text-white mb-2 tracking-tight group-hover:text-gradient transition-all duration-300">
+                                    {stat.value}
+                                </div>
+                                <div className="text-sm text-muted-foreground font-light">{stat.label}</div>
                             </div>
-                            <div className="text-sm text-muted-foreground font-light">{stat.label}</div>
-                        </div>
+                        </ScrollAnimation>
                     ))}
                 </div>
             </div>
@@ -236,12 +239,14 @@ export function WhoNotForSection() {
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {notForList.map((item, i) => (
-                        <div key={i} className="group flex items-center gap-3 p-4 rounded-xl bg-zinc-900/40 border border-white/5 hover:border-red-500/30 hover:bg-red-500/5 transition-all duration-300 transform hover:-translate-y-1">
-                            <div className="w-8 h-8 rounded-full bg-red-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-red-500/20 transition-colors">
-                                <span className="text-red-500 text-sm font-bold">✕</span>
+                        <ScrollAnimation key={i} animation="fade-in-left" delay={i * 50}>
+                            <div className="group flex items-center gap-3 p-4 rounded-xl bg-zinc-900/40 border border-white/5 hover:border-red-500/30 hover:bg-red-500/5 transition-all duration-300 transform hover:-translate-y-1">
+                                <div className="w-8 h-8 rounded-full bg-red-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-red-500/20 transition-colors">
+                                    <span className="text-red-500 text-sm font-bold">✕</span>
+                                </div>
+                                <span className="text-muted-foreground font-light text-sm text-left group-hover:text-red-200/80">{item}</span>
                             </div>
-                            <span className="text-muted-foreground font-light text-sm text-left group-hover:text-red-200/80">{item}</span>
-                        </div>
+                        </ScrollAnimation>
                     ))}
                 </div>
             </div>
@@ -282,20 +287,26 @@ export function TruthSection() {
     return (
         <section className="py-32 px-4 bg-black overflow-hidden select-none">
             <div className="max-w-6xl mx-auto flex flex-col gap-12 md:gap-24 relative z-10">
-                <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/50 tracking-tighter text-left opacity-0 animate-fade-in-up" style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}>
-                    Speak truth to <br />
-                    <span className="text-transparent" style={{ WebkitTextStroke: '1px white' }}>your power</span>
-                </h2>
+                <ScrollAnimation animation="fade-in-up" delay={100}>
+                    <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/50 tracking-tighter text-left">
+                        Speak truth to <br />
+                        <span className="text-transparent" style={{ WebkitTextStroke: '1px white' }}>your power</span>
+                    </h2>
+                </ScrollAnimation>
 
-                <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter text-right opacity-0 animate-fade-in-up" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
-                    Lock in <br />
-                    <span className="text-emerald-500">your focus</span>
-                </h2>
+                <ScrollAnimation animation="fade-in-up" delay={300}>
+                    <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter text-right">
+                        Lock in <br />
+                        <span className="text-emerald-500">your focus</span>
+                    </h2>
+                </ScrollAnimation>
 
-                <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-white/90 tracking-tighter text-center opacity-0 animate-fade-in-up" style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}>
-                    Be honest with <br />
-                    <span className="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">your focus</span>
-                </h2>
+                <ScrollAnimation animation="fade-in-up" delay={500}>
+                    <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-white/90 tracking-tighter text-center">
+                        Be honest with <br />
+                        <span className="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">your focus</span>
+                    </h2>
+                </ScrollAnimation>
             </div>
 
             {/* Background decoration */}
@@ -453,16 +464,17 @@ export function FeaturesSection() {
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {features.map((feature, i) => (
-                        <div
-                            key={i}
-                            className="card-premium card-spotlight p-6"
-                        >
-                            <div className="w-12 h-12 rounded-xl glass flex items-center justify-center mb-4 icon-float">
-                                <MaterialIcon name={feature.icon} className="text-white" />
+                        <ScrollAnimation key={i} animation="zoom-in" delay={i * 100}>
+                            <div
+                                className="card-premium card-spotlight p-6"
+                            >
+                                <div className="w-12 h-12 rounded-xl glass flex items-center justify-center mb-4 icon-float">
+                                    <MaterialIcon name={feature.icon} className="text-white" />
+                                </div>
+                                <h3 className="text-lg font-medium mb-2 text-white">{feature.title}</h3>
+                                <p className="text-muted-foreground text-sm font-light leading-relaxed">{feature.description}</p>
                             </div>
-                            <h3 className="text-lg font-medium mb-2 text-white">{feature.title}</h3>
-                            <p className="text-muted-foreground text-sm font-light leading-relaxed">{feature.description}</p>
-                        </div>
+                        </ScrollAnimation>
                     ))}
                 </div>
             </div>
@@ -634,7 +646,7 @@ export function PricingSection({
                 </div>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {products.map((product) => {
+                    {products.map((product, i) => {
                         const price = product?.prices?.find(
                             (price) => price.interval === billingInterval
                         );
@@ -650,59 +662,60 @@ export function PricingSection({
                         const isCurrent = subscription ? product.name === subscription?.prices?.products?.name : false;
 
                         return (
-                            <div
-                                key={product.id}
-                                className={`relative bg-card border rounded-xl p-6 ${isPopular ? "border-white/30 glow-white" : "border-border"}`}
-                            >
-                                {isPopular && (
-                                    <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                                        <Badge className="bg-white text-black">Popular</Badge>
-                                    </div>
-                                )}
-                                {isCurrent && (
-                                    <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                                        <Badge variant="outline">Current</Badge>
-                                    </div>
-                                )}
-
-                                <div className="mb-4">
-                                    <h3 className="text-lg font-semibold text-white">{product.name}</h3>
-                                    <div className="flex items-baseline gap-1 mt-2">
-                                        <span className="text-4xl font-bold text-white">{priceString}</span>
-                                        <span className="text-muted-foreground">/{billingInterval}</span>
-                                    </div>
-                                    <p className="text-sm text-muted-foreground mt-2">{product.description}</p>
-                                </div>
-
-                                <Button
-                                    loading={priceIdLoading === price.id}
-                                    onClick={() => handleStripeCheckout(price)}
-                                    className={`w-full mb-6 ${isPopular
-                                        ? "bg-white hover:bg-zinc-100 text-black"
-                                        : isCurrent
-                                            ? "bg-secondary"
-                                            : "bg-secondary hover:bg-secondary/80"
-                                        }`}
-                                    variant={isCurrent ? "outline" : "default"}
+                            <ScrollAnimation key={product.id} animation="fade-in-up" delay={i * 100}>
+                                <div
+                                    className={`relative bg-card border rounded-xl p-6 ${isPopular ? "border-white/30 glow-white" : "border-border"}`}
                                 >
-                                    {subscription ? 'Manage' : 'Subscribe'}
-                                </Button>
+                                    {isPopular && (
+                                        <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                                            <Badge className="bg-white text-black">Popular</Badge>
+                                        </div>
+                                    )}
+                                    {isCurrent && (
+                                        <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                                            <Badge variant="outline">Current</Badge>
+                                        </div>
+                                    )}
 
-                                <ul className="space-y-3">
-                                    <li className="flex items-start gap-2 text-sm">
-                                        <Check className="w-4 h-4 text-white mt-0.5 flex-shrink-0" />
-                                        <span className="text-muted-foreground">Unlimited focus sessions</span>
-                                    </li>
-                                    <li className="flex items-start gap-2 text-sm">
-                                        <Check className="w-4 h-4 text-white mt-0.5 flex-shrink-0" />
-                                        <span className="text-muted-foreground">Nuclear app blocker</span>
-                                    </li>
-                                    <li className="flex items-start gap-2 text-sm">
-                                        <Check className="w-4 h-4 text-white mt-0.5 flex-shrink-0" />
-                                        <span className="text-muted-foreground">ADHD mode algorithms</span>
-                                    </li>
-                                </ul>
-                            </div>
+                                    <div className="mb-4">
+                                        <h3 className="text-lg font-semibold text-white">{product.name}</h3>
+                                        <div className="flex items-baseline gap-1 mt-2">
+                                            <span className="text-4xl font-bold text-white">{priceString}</span>
+                                            <span className="text-muted-foreground">/{billingInterval}</span>
+                                        </div>
+                                        <p className="text-sm text-muted-foreground mt-2">{product.description}</p>
+                                    </div>
+
+                                    <Button
+                                        loading={priceIdLoading === price.id}
+                                        onClick={() => handleStripeCheckout(price)}
+                                        className={`w-full mb-6 ${isPopular
+                                            ? "bg-white hover:bg-zinc-100 text-black"
+                                            : isCurrent
+                                                ? "bg-secondary"
+                                                : "bg-secondary hover:bg-secondary/80"
+                                            }`}
+                                        variant={isCurrent ? "outline" : "default"}
+                                    >
+                                        {subscription ? 'Manage' : 'Subscribe'}
+                                    </Button>
+
+                                    <ul className="space-y-3">
+                                        <li className="flex items-start gap-2 text-sm">
+                                            <Check className="w-4 h-4 text-white mt-0.5 flex-shrink-0" />
+                                            <span className="text-muted-foreground">Unlimited focus sessions</span>
+                                        </li>
+                                        <li className="flex items-start gap-2 text-sm">
+                                            <Check className="w-4 h-4 text-white mt-0.5 flex-shrink-0" />
+                                            <span className="text-muted-foreground">Nuclear app blocker</span>
+                                        </li>
+                                        <li className="flex items-start gap-2 text-sm">
+                                            <Check className="w-4 h-4 text-white mt-0.5 flex-shrink-0" />
+                                            <span className="text-muted-foreground">ADHD mode algorithms</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </ScrollAnimation>
                         );
                     })}
                 </div>
@@ -717,30 +730,38 @@ export function GlobalStatsSection() {
         <section className="py-24 px-4">
             <div className="max-w-6xl mx-auto">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
-                            Warriors worldwide
-                            <br />
-                            <span className="text-gradient">trust StudyEXE</span>
-                        </h2>
-                        <p className="text-muted-foreground mb-8">
-                            Join thousands of reformed procrastinators who use StudyEXE to destroy
-                            distractions, demolish ADHD, and dominate their goals.
-                        </p>
+                    <div className="relative z-10">
+                        <ScrollAnimation animation="fade-in-left">
+                            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+                                Warriors worldwide
+                                <br />
+                                <span className="text-gradient">trust StudyEXE</span>
+                            </h2>
+                            <p className="text-muted-foreground mb-8">
+                                Join thousands of reformed procrastinators who use StudyEXE to destroy
+                                distractions, demolish ADHD, and dominate their goals.
+                            </p>
+                        </ScrollAnimation>
 
                         <div className="grid grid-cols-3 gap-8">
-                            <div>
-                                <div className="text-3xl font-bold text-white">50K+</div>
-                                <div className="text-sm text-muted-foreground">Warriors</div>
-                            </div>
-                            <div>
-                                <div className="text-3xl font-bold text-white">8.4M</div>
-                                <div className="text-sm text-muted-foreground">Hours Reclaimed</div>
-                            </div>
-                            <div>
-                                <div className="text-3xl font-bold text-white">127+</div>
-                                <div className="text-sm text-muted-foreground">Countries</div>
-                            </div>
+                            <ScrollAnimation animation="fade-in-up" delay={200}>
+                                <div>
+                                    <div className="text-3xl font-bold text-white">50K+</div>
+                                    <div className="text-sm text-muted-foreground">Warriors</div>
+                                </div>
+                            </ScrollAnimation>
+                            <ScrollAnimation animation="fade-in-up" delay={300}>
+                                <div>
+                                    <div className="text-3xl font-bold text-white">8.4M</div>
+                                    <div className="text-sm text-muted-foreground">Hours Reclaimed</div>
+                                </div>
+                            </ScrollAnimation>
+                            <ScrollAnimation animation="fade-in-up" delay={400}>
+                                <div>
+                                    <div className="text-3xl font-bold text-white">127+</div>
+                                    <div className="text-sm text-muted-foreground">Countries</div>
+                                </div>
+                            </ScrollAnimation>
                         </div>
                     </div>
 
@@ -795,27 +816,31 @@ export function FAQSection() {
     return (
         <section id="faq" className="py-24 px-4 bg-secondary/30">
             <div className="max-w-3xl mx-auto">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">Frequently asked questions</h2>
-                    <p className="text-muted-foreground">Everything you need to know about StudyEXE</p>
-                </div>
+                <ScrollAnimation animation="fade-in-up">
+                    <div className="text-center mb-16">
+                        <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">Frequently asked questions</h2>
+                        <p className="text-muted-foreground">Everything you need to know about StudyEXE</p>
+                    </div>
+                </ScrollAnimation>
 
-                <Accordion type="single" collapsible className="space-y-4">
-                    {faqs.map((faq, i) => (
-                        <AccordionItem
-                            key={i}
-                            value={`item-${i}`}
-                            className="bg-card border border-border rounded-xl px-6"
-                        >
-                            <AccordionTrigger className="text-left hover:no-underline py-4 text-white">
-                                {faq.question}
-                            </AccordionTrigger>
-                            <AccordionContent className="text-muted-foreground pb-4">
-                                {faq.answer}
-                            </AccordionContent>
-                        </AccordionItem>
-                    ))}
-                </Accordion>
+                <ScrollAnimation animation="fade-in-up" delay={200}>
+                    <Accordion type="single" collapsible className="space-y-4">
+                        {faqs.map((faq, i) => (
+                            <AccordionItem
+                                key={i}
+                                value={`item-${i}`}
+                                className="bg-card border border-border rounded-xl px-6"
+                            >
+                                <AccordionTrigger className="text-left hover:no-underline py-4 text-white">
+                                    {faq.question}
+                                </AccordionTrigger>
+                                <AccordionContent className="text-muted-foreground pb-4">
+                                    {faq.answer}
+                                </AccordionContent>
+                            </AccordionItem>
+                        ))}
+                    </Accordion>
+                </ScrollAnimation>
             </div>
         </section>
     );
@@ -826,27 +851,29 @@ export function CTASection() {
     return (
         <section className="py-24 px-4">
             <div className="max-w-4xl mx-auto">
-                <div className="relative bg-gradient-to-br from-zinc-800/50 via-card to-card border border-zinc-700/50 rounded-3xl p-12 text-center overflow-hidden">
-                    {/* Background decoration */}
-                    <div className="absolute top-0 left-0 w-32 h-32 bg-white/5 rounded-full blur-3xl" />
-                    <div className="absolute bottom-0 right-0 w-40 h-40 bg-white/5 rounded-full blur-3xl" />
+                <ScrollAnimation animation="scale-in">
+                    <div className="relative bg-gradient-to-br from-zinc-800/50 via-card to-card border border-zinc-700/50 rounded-3xl p-12 text-center overflow-hidden">
+                        {/* Background decoration */}
+                        <div className="absolute top-0 left-0 w-32 h-32 bg-white/5 rounded-full blur-3xl" />
+                        <div className="absolute bottom-0 right-0 w-40 h-40 bg-white/5 rounded-full blur-3xl" />
 
-                    <div className="relative z-10">
-                        <h2 className="text-4xl md:text-5xl font-bold mb-2 text-white">Study.</h2>
-                        <h2 className="text-4xl md:text-5xl font-bold mb-8">
-                            <span className="text-gradient">Or Die Trying.</span>
-                        </h2>
+                        <div className="relative z-10">
+                            <h2 className="text-4xl md:text-5xl font-bold mb-2 text-white">Study.</h2>
+                            <h2 className="text-4xl md:text-5xl font-bold mb-8">
+                                <span className="text-gradient">Or Die Trying.</span>
+                            </h2>
 
-                        <Button size="lg" className="bg-white hover:bg-zinc-100 text-black text-lg px-8 gap-2">
-                            <MaterialIcon name="download" className="text-black" />
-                            Download StudyEXE
-                        </Button>
+                            <Button size="lg" className="bg-white hover:bg-zinc-100 text-black text-lg px-8 gap-2">
+                                <MaterialIcon name="download" className="text-black" />
+                                Download StudyEXE
+                            </Button>
 
-                        <p className="text-sm text-muted-foreground mt-4">
-                            50K+ warriors
-                        </p>
+                            <p className="text-sm text-muted-foreground mt-4">
+                                50K+ warriors
+                            </p>
+                        </div>
                     </div>
-                </div>
+                </ScrollAnimation>
             </div>
         </section>
     );
