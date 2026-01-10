@@ -63,8 +63,8 @@ export function Navbar({ user }: { user: User | null }) {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     <Link href="/landing" className="flex items-center gap-2">
-                        <div className="w-8 h-8 bg-red-600 rounded-lg flex items-center justify-center">
-                            <Skull className="w-5 h-5 text-white" />
+                        <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
+                            <Skull className="w-5 h-5 text-black" />
                         </div>
                         <span className="font-bold text-lg text-white">StudyEXE</span>
                     </Link>
@@ -106,7 +106,7 @@ export function Navbar({ user }: { user: User | null }) {
                                 <Link href="/signin">
                                     <Button variant="ghost" size="sm" className="text-white hover:text-white">Sign in</Button>
                                 </Link>
-                                <Button size="sm" className="bg-red-600 hover:bg-red-700 text-white border-none">
+                                <Button size="sm" className="bg-white hover:bg-zinc-100 text-black border-none">
                                     Download Free
                                 </Button>
                             </>
@@ -125,12 +125,12 @@ export function HeroSection() {
     return (
         <section className="pt-32 pb-20 px-4 relative overflow-hidden">
             {/* Background gradient */}
-            <div className="absolute inset-0 bg-gradient-to-b from-red-950/20 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-b from-zinc-800/30 via-transparent to-transparent pointer-events-none" />
 
             <div className="max-w-5xl mx-auto text-center relative">
                 {/* Badge */}
                 <div className="inline-flex items-center gap-2 bg-secondary/80 border border-border rounded-full px-4 py-2 mb-8 animate-pulse-glow">
-                    <Zap className="w-4 h-4 text-red-500" />
+                    <Zap className="w-4 h-4 text-white" />
                     <span className="text-sm">47,291 distractions killed this week</span>
                 </div>
 
@@ -153,7 +153,7 @@ export function HeroSection() {
                     <span className="text-foreground font-semibold text-white">You will study or you will suffer.</span>{" "}
                     StudyEXE locks your computer, blocks everything, and forces you to focus.
                     No escape. No mercy. Average users gain{" "}
-                    <span className="text-red-500 font-bold">4.2 hours/day</span> of focus time.
+                    <span className="text-white font-bold">4.2 hours/day</span> of focus time.
                 </p>
 
                 {/* CTA Section */}
@@ -167,7 +167,7 @@ export function HeroSection() {
                             placeholder="Enter your email for download link"
                             className="flex-1 bg-transparent border-none outline-none text-sm py-2 px-2 text-white"
                         />
-                        <Button className="bg-red-600 hover:bg-red-700 gap-2">
+                        <Button className="bg-white hover:bg-zinc-100 text-black gap-2">
                             <Skull className="w-4 h-4" />
                             Kill ADHD
                         </Button>
@@ -180,7 +180,7 @@ export function HeroSection() {
                         <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                         12,847 active warriors
                     </span>
-                    <span className="text-red-500 font-semibold">8.4M hours reclaimed</span>
+                    <span className="text-white font-semibold">8.4M hours reclaimed</span>
                     <span>Free forever tier</span>
                 </div>
             </div>
@@ -257,7 +257,7 @@ export function HowItWorksSection() {
                         {steps.map((step, i) => (
                             <div key={i} className="text-center relative">
                                 <div className="relative z-10 inline-flex items-center justify-center w-16 h-16 rounded-full bg-secondary border border-border mb-4">
-                                    <step.icon className="w-7 h-7 text-red-500" />
+                                    <step.icon className="w-7 h-7 text-white" />
                                 </div>
                                 <div className="mb-3">
                                     <Badge variant="outline">0{i + 1}</Badge>
@@ -322,8 +322,8 @@ export function FeaturesSection() {
                             key={i}
                             className="bg-card border border-border rounded-xl p-6 card-hover"
                         >
-                            <div className="w-12 h-12 rounded-lg bg-red-600/10 flex items-center justify-center mb-4">
-                                <feature.icon className="w-6 h-6 text-red-500" />
+                            <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center mb-4">
+                                <feature.icon className="w-6 h-6 text-white" />
                             </div>
                             <h3 className="text-lg font-semibold mb-2 text-white">{feature.title}</h3>
                             <p className="text-muted-foreground text-sm">{feature.description}</p>
@@ -382,7 +382,7 @@ export function TestimonialsSection() {
                             className="flex-shrink-0 w-80 bg-card border border-border rounded-xl p-5"
                         >
                             <div className="flex items-center gap-3 mb-3">
-                                <div className="w-10 h-10 rounded-full bg-red-600/20 flex items-center justify-center text-sm font-bold text-white">
+                                <div className="w-10 h-10 rounded-full bg-zinc-700 flex items-center justify-center text-sm font-bold text-white">
                                     {testimonial.name.split(" ").map(n => n[0]).join("")}
                                 </div>
                                 <div>
@@ -477,7 +477,7 @@ export function PricingSection({
                             <button
                                 onClick={() => setBillingInterval('month')}
                                 className={`px-6 py-2 rounded-lg text-sm font-medium transition-all ${billingInterval === 'month'
-                                    ? "bg-red-600 text-white shadow-lg shadow-red-600/20"
+                                    ? "bg-white text-black shadow-lg shadow-white/10"
                                     : "text-muted-foreground hover:text-white"
                                     }`}
                             >
@@ -488,7 +488,7 @@ export function PricingSection({
                             <button
                                 onClick={() => setBillingInterval('year')}
                                 className={`px-6 py-2 rounded-lg text-sm font-medium transition-all ${billingInterval === 'year'
-                                    ? "bg-red-600 text-white shadow-lg shadow-red-600/20"
+                                    ? "bg-white text-black shadow-lg shadow-white/10"
                                     : "text-muted-foreground hover:text-white"
                                     }`}
                             >
@@ -517,11 +517,11 @@ export function PricingSection({
                         return (
                             <div
                                 key={product.id}
-                                className={`relative bg-card border rounded-xl p-6 ${isPopular ? "border-red-600 glow-red" : "border-border"}`}
+                                className={`relative bg-card border rounded-xl p-6 ${isPopular ? "border-white/30 glow-white" : "border-border"}`}
                             >
                                 {isPopular && (
                                     <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                                        <Badge className="bg-red-600">Popular</Badge>
+                                        <Badge className="bg-white text-black">Popular</Badge>
                                     </div>
                                 )}
                                 {isCurrent && (
@@ -543,7 +543,7 @@ export function PricingSection({
                                     loading={priceIdLoading === price.id}
                                     onClick={() => handleStripeCheckout(price)}
                                     className={`w-full mb-6 ${isPopular
-                                        ? "bg-red-600 hover:bg-red-700"
+                                        ? "bg-white hover:bg-zinc-100 text-black"
                                         : isCurrent
                                             ? "bg-secondary"
                                             : "bg-secondary hover:bg-secondary/80"
@@ -555,15 +555,15 @@ export function PricingSection({
 
                                 <ul className="space-y-3">
                                     <li className="flex items-start gap-2 text-sm">
-                                        <Check className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0" />
+                                        <Check className="w-4 h-4 text-white mt-0.5 flex-shrink-0" />
                                         <span className="text-muted-foreground">Unlimited focus sessions</span>
                                     </li>
                                     <li className="flex items-start gap-2 text-sm">
-                                        <Check className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0" />
+                                        <Check className="w-4 h-4 text-white mt-0.5 flex-shrink-0" />
                                         <span className="text-muted-foreground">Nuclear app blocker</span>
                                     </li>
                                     <li className="flex items-start gap-2 text-sm">
-                                        <Check className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0" />
+                                        <Check className="w-4 h-4 text-white mt-0.5 flex-shrink-0" />
                                         <span className="text-muted-foreground">ADHD mode algorithms</span>
                                     </li>
                                 </ul>
@@ -595,25 +595,25 @@ export function GlobalStatsSection() {
 
                         <div className="grid grid-cols-3 gap-8">
                             <div>
-                                <div className="text-3xl font-bold text-red-500">50K+</div>
+                                <div className="text-3xl font-bold text-white">50K+</div>
                                 <div className="text-sm text-muted-foreground">Warriors</div>
                             </div>
                             <div>
-                                <div className="text-3xl font-bold text-red-500">8.4M</div>
+                                <div className="text-3xl font-bold text-white">8.4M</div>
                                 <div className="text-sm text-muted-foreground">Hours Reclaimed</div>
                             </div>
                             <div>
-                                <div className="text-3xl font-bold text-red-500">127+</div>
+                                <div className="text-3xl font-bold text-white">127+</div>
                                 <div className="text-sm text-muted-foreground">Countries</div>
                             </div>
                         </div>
                     </div>
 
                     <div className="relative">
-                        <div className="w-64 h-64 md:w-80 md:h-80 mx-auto rounded-full border-4 border-red-600/30 flex items-center justify-center">
-                            <div className="w-48 h-48 md:w-60 md:h-60 rounded-full border-2 border-red-600/50 flex items-center justify-center">
-                                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-red-600/10 border border-red-600 flex items-center justify-center">
-                                    <Skull className="w-16 h-16 text-red-500" />
+                        <div className="w-64 h-64 md:w-80 md:h-80 mx-auto rounded-full border-4 border-white/20 flex items-center justify-center">
+                            <div className="w-48 h-48 md:w-60 md:h-60 rounded-full border-2 border-white/30 flex items-center justify-center">
+                                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-white/5 border border-white/40 flex items-center justify-center">
+                                    <Skull className="w-16 h-16 text-white" />
                                 </div>
                             </div>
                         </div>
@@ -691,10 +691,10 @@ export function CTASection() {
     return (
         <section className="py-24 px-4">
             <div className="max-w-4xl mx-auto">
-                <div className="relative bg-gradient-to-br from-red-950/50 via-card to-card border border-red-900/50 rounded-3xl p-12 text-center overflow-hidden">
+                <div className="relative bg-gradient-to-br from-zinc-800/50 via-card to-card border border-zinc-700/50 rounded-3xl p-12 text-center overflow-hidden">
                     {/* Background decoration */}
-                    <div className="absolute top-0 left-0 w-32 h-32 bg-red-600/10 rounded-full blur-3xl" />
-                    <div className="absolute bottom-0 right-0 w-40 h-40 bg-red-600/10 rounded-full blur-3xl" />
+                    <div className="absolute top-0 left-0 w-32 h-32 bg-white/5 rounded-full blur-3xl" />
+                    <div className="absolute bottom-0 right-0 w-40 h-40 bg-white/5 rounded-full blur-3xl" />
 
                     <div className="relative z-10">
                         <h2 className="text-4xl md:text-5xl font-bold mb-2 text-white">Study.</h2>
@@ -702,7 +702,7 @@ export function CTASection() {
                             <span className="text-gradient">Or Die Trying.</span>
                         </h2>
 
-                        <Button size="lg" className="bg-red-600 hover:bg-red-700 text-lg px-8 gap-2">
+                        <Button size="lg" className="bg-white hover:bg-zinc-100 text-black text-lg px-8 gap-2">
                             <Download className="w-5 h-5" />
                             Download StudyEXE Free
                         </Button>
@@ -724,8 +724,8 @@ export function LandingFooter() {
             <div className="max-w-6xl mx-auto">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-12">
                     <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 bg-red-600 rounded-lg flex items-center justify-center">
-                            <Skull className="w-5 h-5 text-white" />
+                        <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
+                            <Skull className="w-5 h-5 text-black" />
                         </div>
                         <span className="font-bold text-lg text-white">StudyEXE</span>
                     </div>
