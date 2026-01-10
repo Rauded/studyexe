@@ -43,7 +43,6 @@ export default async function LandingPage() {
             <GlobalStatsSection />
             <RealityCheckSection />
             <TruthSection />
-            <AsciiArtSection />
             <HowItWorksSection />
 
             {/* Loop 3: Hook -> Warning -> Feature */}
@@ -54,8 +53,8 @@ export default async function LandingPage() {
                 products={products ?? []}
                 subscription={subscription}
             />
-
             <FAQSection />
+            <AsciiArtSection />
             <CTASection />
         </main>
     );
