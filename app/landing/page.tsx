@@ -6,7 +6,6 @@ import {
     FeaturesSection,
     GlobalStatsSection,
     RealityCheckSection,
-    TruthSection,
     HowItWorksSection,
     TestimonialsSection,
     NoMercySection,
@@ -42,7 +41,7 @@ export default async function LandingPage() {
             {/* Loop 2: Hook -> Warning -> Feature */}
             <GlobalStatsSection />
             <RealityCheckSection />
-            <TruthSection />
+            {/* TruthSection removed but kept in Sections.tsx */}
             <HowItWorksSection />
 
             {/* Loop 3: Hook -> Warning -> Feature */}
