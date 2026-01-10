@@ -212,6 +212,8 @@ interface Particle {
 export function AsciiArtSection() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
+    const ctaRef = useRef<HTMLDivElement>(null);
+    const hasScrolledRef = useRef(false);
 
     // Config
     const fontSize = 10; // Slightly larger for better readability if needed, but 8-10 fits more
@@ -346,10 +348,51 @@ export function AsciiArtSection() {
         };
     }, []);
 
+    // Auto-scroll to CTA when section comes into view
+    useEffect(() => {
+        const container = containerRef.current;
+        const cta = ctaRef.current;
+        if (!container || !cta) return;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    // When section is 30% visible and we haven't scrolled yet
+                    if (entry.isIntersecting && entry.intersectionRatio > 0.3 && !hasScrolledRef.current) {
+                        hasScrolledRef.current = true;
+                        cta.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            },
+            { threshold: [0.3] }
+        );
+
+        observer.observe(container);
+
+        // Reset the flag when user scrolls away
+        const resetObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) {
+                        hasScrolledRef.current = false;
+                    }
+                });
+            },
+            { threshold: [0] }
+        );
+
+        resetObserver.observe(container);
+
+        return () => {
+            observer.disconnect();
+            resetObserver.disconnect();
+        };
+    }, []);
+
     return (
         <section className="bg-black overflow-hidden flex flex-col items-center relative" ref={containerRef}>
             {/* CTA Content - Above ASCII Art */}
-            <div className="w-full pt-16 z-10">
+            <div className="w-full pt-16 z-10" ref={ctaRef}>
                 <div className="max-w-4xl mx-auto text-center px-4">
                     <ScrollAnimation animation="scale-in">
                         <div className="relative text-center">
