@@ -360,7 +360,7 @@ export function AsciiArtSection() {
                     // When section is 30% visible and we haven't scrolled yet
                     if (entry.isIntersecting && entry.intersectionRatio > 0.3 && !hasScrolledRef.current) {
                         hasScrolledRef.current = true;
-                        cta.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        container.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }
                 });
             },
@@ -392,7 +392,7 @@ export function AsciiArtSection() {
     return (
         <section className="bg-black overflow-hidden flex flex-col items-center relative" ref={containerRef}>
             {/* CTA Content - Above ASCII Art */}
-            <div className="w-full pt-16 z-10" ref={ctaRef}>
+            <div className="w-full pt-20 z-10" ref={ctaRef}>
                 <div className="max-w-4xl mx-auto text-center px-4">
                     <ScrollAnimation animation="scale-in">
                         <div className="relative text-center">
