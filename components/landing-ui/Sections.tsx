@@ -843,7 +843,7 @@ export function CTASection() {
                         </Button>
 
                         <p className="text-sm text-muted-foreground mt-4">
-                            No credit card required • 50K+ warriors
+                            50K+ warriors
                         </p>
                     </div>
                 </div>

@@ -344,7 +344,7 @@ export function AsciiArtSection() {
     }, []);
 
     return (
-        <section className="py-20 bg-black overflow-hidden flex justify-center items-center" ref={containerRef}>
+        <section className="bg-black overflow-hidden flex justify-center items-center" ref={containerRef}>
             <canvas ref={canvasRef} className="cursor-crosshair max-w-full" />
         </section>
     );
