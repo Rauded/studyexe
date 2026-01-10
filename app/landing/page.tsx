@@ -12,7 +12,7 @@ import {
     NoMercySection,
     PricingSection,
     FAQSection,
-    CTASection
+
 } from "@/components/landing-ui/Sections";
 import { AsciiArtSection } from '@/components/landing-ui/AsciiArtSection';
 import { createClient } from '@/utils/supabase/server';
@@ -55,7 +55,7 @@ export default async function LandingPage() {
             />
             <FAQSection />
             <AsciiArtSection />
-            <CTASection />
+
         </main>
     );
 }
