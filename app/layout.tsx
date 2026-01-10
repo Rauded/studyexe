@@ -1,9 +1,17 @@
 import { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 import Navbar from '@/components/ui/Navbar';
 import { Toaster } from '@/components/ui/Toasts/toaster';
 import { PropsWithChildren, Suspense } from 'react';
 import { getURL } from '@/utils/helpers';
 import 'styles/main.css';
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600'],
+  variable: '--font-inter',
+  display: 'swap',
+});
 
 const title = 'Next.js Subscription Starter';
 const description = 'Brought to you by Vercel, Stripe, and Supabase.';
@@ -20,8 +28,14 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: PropsWithChildren) {
   return (
-    <html lang="en">
-      <body className="bg-black">
+    <html lang="en" className={inter.variable}>
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
+        />
+      </head>
+      <body className={`${inter.className} bg-black font-light`}>
         <Navbar />
         <main
           id="skip"
@@ -36,3 +50,4 @@ export default async function RootLayout({ children }: PropsWithChildren) {
     </html>
   );
 }
+

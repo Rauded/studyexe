@@ -9,22 +9,10 @@ import {
     AccordionTrigger,
 } from "./accordion";
 import { Badge } from "./badge";
+import { MaterialIcon } from "./MaterialIcon";
 import {
-    Skull,
-    Zap,
-    Shield,
-    Lock,
-    Timer,
-    Download,
-    Settings,
-    Target,
-    Trophy,
     Check,
     ChevronRight,
-    Monitor,
-    Ban,
-    Brain,
-    Clock,
     LogOut,
     User as UserIcon,
 } from "lucide-react";
@@ -64,9 +52,9 @@ export function Navbar({ user }: { user: User | null }) {
                 <div className="flex items-center justify-between h-16">
                     <Link href="/landing" className="flex items-center gap-2">
                         <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-                            <Skull className="w-5 h-5 text-black" />
+                            <MaterialIcon name="grid_view" className="text-black" size="sm" />
                         </div>
-                        <span className="font-bold text-lg text-white">StudyEXE</span>
+                        <span className="font-medium text-lg text-white tracking-tight">StudyEXE</span>
                     </Link>
 
                     <div className="hidden md:flex items-center gap-8">
@@ -130,8 +118,8 @@ export function HeroSection() {
             <div className="max-w-5xl mx-auto text-center relative">
                 {/* Badge */}
                 <div className="inline-flex items-center gap-2 bg-secondary/80 border border-border rounded-full px-4 py-2 mb-8 animate-pulse-glow">
-                    <Zap className="w-4 h-4 text-white" />
-                    <span className="text-sm">47,291 distractions killed this week</span>
+                    <MaterialIcon name="bolt" className="text-white" size="sm" />
+                    <span className="text-sm font-light">47,291 distractions killed this week</span>
                 </div>
 
                 {/* Main Headline */}
@@ -160,7 +148,7 @@ export function HeroSection() {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
                     <div className="flex items-center bg-secondary/60 rounded-xl p-2 w-full max-w-md border border-border">
                         <div className="flex items-center gap-2 px-3 text-muted-foreground">
-                            <Monitor className="w-5 h-5" />
+                            <MaterialIcon name="computer" size="sm" />
                         </div>
                         <input
                             type="email"
@@ -168,7 +156,7 @@ export function HeroSection() {
                             className="flex-1 bg-transparent border-none outline-none text-sm py-2 px-2 text-white"
                         />
                         <Button className="bg-white hover:bg-zinc-100 text-black gap-2">
-                            <Skull className="w-4 h-4" />
+                            <MaterialIcon name="target" className="text-black" size="sm" />
                             Kill ADHD
                         </Button>
                     </div>
@@ -219,22 +207,22 @@ export function StatsSection() {
 export function HowItWorksSection() {
     const steps = [
         {
-            icon: Download,
+            icon: "download",
             title: "Download",
             description: "Install StudyEXE on Windows, Mac, or Linux in 60 seconds",
         },
         {
-            icon: Settings,
+            icon: "settings",
             title: "Configure",
             description: "Set your study hours, blocked apps, and punishment level",
         },
         {
-            icon: Lock,
+            icon: "lock",
             title: "Lock In",
             description: "Start a session. There's no going back. No escape.",
         },
         {
-            icon: Trophy,
+            icon: "emoji_events",
             title: "Dominate",
             description: "Watch your productivity skyrocket. Become unstoppable.",
         },
@@ -257,7 +245,7 @@ export function HowItWorksSection() {
                         {steps.map((step, i) => (
                             <div key={i} className="text-center relative">
                                 <div className="relative z-10 inline-flex items-center justify-center w-16 h-16 rounded-full bg-secondary border border-border mb-4">
-                                    <step.icon className="w-7 h-7 text-white" />
+                                    <MaterialIcon name={step.icon} className="text-white" size="lg" />
                                 </div>
                                 <div className="mb-3">
                                     <Badge variant="outline">0{i + 1}</Badge>
@@ -277,32 +265,32 @@ export function HowItWorksSection() {
 export function FeaturesSection() {
     const features = [
         {
-            icon: Ban,
+            icon: "block",
             title: "Nuclear App Blocker",
             description: "Blocks apps at the kernel level. Task manager won't save you. Nothing will.",
         },
         {
-            icon: Timer,
+            icon: "timer",
             title: "Pomodoro on Steroids",
             description: "Customizable focus sessions with breaks. Skip a break? Get punished.",
         },
         {
-            icon: Shield,
+            icon: "shield",
             title: "Anti-Cheat System",
             description: "Detects when you try to bypass. Adds penalty time. Resistance is futile.",
         },
         {
-            icon: Brain,
+            icon: "psychology",
             title: "ADHD Mode",
             description: "Special algorithms designed for the ADHD brain. We understand the struggle.",
         },
         {
-            icon: Target,
+            icon: "target",
             title: "Goal Tracking",
             description: "Set daily, weekly, monthly goals. Watch your progress or face the consequences.",
         },
         {
-            icon: Clock,
+            icon: "schedule",
             title: "Scheduled Lockdowns",
             description: "Pre-schedule study sessions. Your past self will force your future self to work.",
         },
@@ -323,7 +311,7 @@ export function FeaturesSection() {
                             className="bg-card border border-border rounded-xl p-6 card-hover"
                         >
                             <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center mb-4">
-                                <feature.icon className="w-6 h-6 text-white" />
+                                <MaterialIcon name={feature.icon} className="text-white" />
                             </div>
                             <h3 className="text-lg font-semibold mb-2 text-white">{feature.title}</h3>
                             <p className="text-muted-foreground text-sm">{feature.description}</p>
@@ -613,7 +601,7 @@ export function GlobalStatsSection() {
                         <div className="w-64 h-64 md:w-80 md:h-80 mx-auto rounded-full border-4 border-white/20 flex items-center justify-center">
                             <div className="w-48 h-48 md:w-60 md:h-60 rounded-full border-2 border-white/30 flex items-center justify-center">
                                 <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-white/5 border border-white/40 flex items-center justify-center">
-                                    <Skull className="w-16 h-16 text-white" />
+                                    <MaterialIcon name="public" className="text-white" size="xl" />
                                 </div>
                             </div>
                         </div>
@@ -703,7 +691,7 @@ export function CTASection() {
                         </h2>
 
                         <Button size="lg" className="bg-white hover:bg-zinc-100 text-black text-lg px-8 gap-2">
-                            <Download className="w-5 h-5" />
+                            <MaterialIcon name="download" className="text-black" />
                             Download StudyEXE Free
                         </Button>
 
@@ -725,9 +713,9 @@ export function LandingFooter() {
                 <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-12">
                     <div className="flex items-center gap-2">
                         <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-                            <Skull className="w-5 h-5 text-black" />
+                            <MaterialIcon name="grid_view" className="text-black" size="sm" />
                         </div>
-                        <span className="font-bold text-lg text-white">StudyEXE</span>
+                        <span className="font-medium text-lg text-white tracking-tight">StudyEXE</span>
                     </div>
 
                     <div className="flex items-center gap-6">

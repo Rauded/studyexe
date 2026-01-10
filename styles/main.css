@@ -24,11 +24,21 @@ html {
 
 html,
 body {
-    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Helvetica Neue',
+    font-family: var(--font-inter), 'Inter', -apple-system, system-ui, BlinkMacSystemFont, 'Helvetica Neue',
         'Helvetica', sans-serif;
     text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;
     @apply text-white bg-black antialiased;
+}
+
+/* Material Symbols icons styling */
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 300,
+        'GRAD' 0,
+        'opsz' 24;
+    vertical-align: middle;
 }
 
 body {
