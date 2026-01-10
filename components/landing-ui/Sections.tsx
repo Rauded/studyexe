@@ -256,7 +256,7 @@ export function RealityCheckSection() {
                 </div>
 
                 <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white tracking-tight">
-                    Time DOES NOT care about your <span className="text-red-500 underline decoration-red-900/50 decoration-4 underline-offset-4">potential</span>
+                    Study or <span className="text-red-500 underline decoration-red-900/50 decoration-4 underline-offset-4">Die</span>
                 </h2>
 
                 <p className="text-xl text-red-100/70 max-w-2xl mx-auto leading-relaxed font-light mb-10">
