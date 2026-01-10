@@ -277,6 +277,33 @@ export function RealityCheckSection() {
     );
 }
 
+// Truth Section
+export function TruthSection() {
+    return (
+        <section className="py-32 px-4 bg-black overflow-hidden select-none">
+            <div className="max-w-6xl mx-auto flex flex-col gap-12 md:gap-24 relative z-10">
+                <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/50 tracking-tighter text-left opacity-0 animate-fade-in-up" style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}>
+                    Speak truth to <br />
+                    <span className="text-transparent" style={{ WebkitTextStroke: '1px white' }}>your power</span>
+                </h2>
+
+                <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter text-right opacity-0 animate-fade-in-up" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
+                    Lock in <br />
+                    <span className="text-emerald-500">your focus</span>
+                </h2>
+
+                <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-white/90 tracking-tighter text-center opacity-0 animate-fade-in-up" style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}>
+                    Be honest with <br />
+                    <span className="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">your focus</span>
+                </h2>
+            </div>
+
+            {/* Background decoration */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/5 blur-[120px] rounded-full pointer-events-none z-0" />
+        </section>
+    );
+}
+
 // No Mercy Section
 export function NoMercySection() {
     return (
