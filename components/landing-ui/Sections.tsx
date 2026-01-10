@@ -322,7 +322,7 @@ export function NoMercySection() {
                         <div className="flex flex-col gap-6">
                             {[
                                 { title: "Kernel-Level Blocking", desc: "We dig deep into the OS. You can't just 'close' the app." },
-                                { title: "No Task Manager", desc: "We block access to kill switches. You are locked in." },
+                                { title: "No Alt-Tab", desc: "We block access to alt-tabbing. You are locked in." },
                                 { title: "Restart Protection", desc: "Restart your computer? We launch immediately on startup." }
                             ].map((item, i) => (
                                 <div key={i} className="flex gap-4 p-4 rounded-xl border border-red-500/10 bg-red-500/5 hover:bg-red-500/10 transition-colors">
