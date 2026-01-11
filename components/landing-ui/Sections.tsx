@@ -192,14 +192,12 @@ export function StatsSection() {
             <div className="max-w-6xl mx-auto">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                     {stats.map((stat, i) => (
-                        <ScrollAnimation key={i} animation="fade-in-up" delay={i * 100}>
-                            <div className="text-center group">
-                                <div className="text-4xl md:text-5xl font-semibold text-white mb-2 tracking-tight group-hover:text-gradient transition-all duration-300">
-                                    {stat.value}
-                                </div>
-                                <div className="text-sm text-muted-foreground font-light">{stat.label}</div>
+                        <div key={i} className="text-center group">
+                            <div className="text-4xl md:text-5xl font-semibold text-white mb-2 tracking-tight group-hover:text-gradient transition-all duration-300">
+                                {stat.value}
                             </div>
-                        </ScrollAnimation>
+                            <div className="text-sm text-muted-foreground font-light">{stat.label}</div>
+                        </div>
                     ))}
                 </div>
             </div>
@@ -238,14 +236,12 @@ export function WhoNotForSection() {
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {notForList.map((item, i) => (
-                        <ScrollAnimation key={i} animation="fade-in-left" delay={i * 50}>
-                            <div className="group flex items-center gap-3 p-4 rounded-xl bg-zinc-900/40 border border-white/5 hover:border-red-500/30 hover:bg-red-500/5 transition-all duration-300 transform hover:-translate-y-1">
-                                <div className="w-8 h-8 rounded-full bg-red-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-red-500/20 transition-colors">
-                                    <span className="text-red-500 text-sm font-bold">✕</span>
-                                </div>
-                                <span className="text-muted-foreground font-light text-sm text-left group-hover:text-red-200/80">{item}</span>
+                        <div key={i} className="group flex items-center gap-3 p-4 rounded-xl bg-zinc-900/40 border border-white/5 hover:border-red-500/30 hover:bg-red-500/5 transition-all duration-300 transform hover:-translate-y-1">
+                            <div className="w-8 h-8 rounded-full bg-red-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-red-500/20 transition-colors">
+                                <span className="text-red-500 text-sm font-bold">✕</span>
                             </div>
-                        </ScrollAnimation>
+                            <span className="text-muted-foreground font-light text-sm text-left group-hover:text-red-200/80">{item}</span>
+                        </div>
                     ))}
                 </div>
             </div>
@@ -465,17 +461,16 @@ export function FeaturesSection() {
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {features.map((feature, i) => (
-                        <ScrollAnimation key={i} animation="zoom-in" delay={i * 100}>
-                            <div
-                                className="card-premium card-spotlight p-6"
-                            >
-                                <div className="w-12 h-12 rounded-xl glass flex items-center justify-center mb-4 icon-float">
-                                    <MaterialIcon name={feature.icon} className="text-white" />
-                                </div>
-                                <h3 className="text-lg font-medium mb-2 text-white">{feature.title}</h3>
-                                <p className="text-muted-foreground text-sm font-light leading-relaxed">{feature.description}</p>
+                        <div
+                            key={i}
+                            className="card-premium card-spotlight p-6"
+                        >
+                            <div className="w-12 h-12 rounded-xl glass flex items-center justify-center mb-4 icon-float">
+                                <MaterialIcon name={feature.icon} className="text-white" />
                             </div>
-                        </ScrollAnimation>
+                            <h3 className="text-lg font-medium mb-2 text-white">{feature.title}</h3>
+                            <p className="text-muted-foreground text-sm font-light leading-relaxed">{feature.description}</p>
+                        </div>
                     ))}
                 </div>
             </div>
@@ -699,91 +694,90 @@ export function PricingSection({
                         const isCurrent = subscription ? product.id === subscription?.prices?.products?.id : false;
 
                         return (
-                            <ScrollAnimation key={product.id} animation="fade-in-up" delay={i * 100}>
-                                <div
-                                    className={`relative bg-card border rounded-xl p-6 ${isPopular ? "border-white/30 glow-white" : "border-border"}`}
-                                >
-                                    {isPopular && (
-                                        <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                                            <Badge className="bg-white text-black">Popular</Badge>
-                                        </div>
-                                    )}
-                                    {isCurrent && (
-                                        <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                                            <Badge variant="outline">Current</Badge>
-                                        </div>
-                                    )}
-
-                                    <div className="mb-4">
-                                        <h3 className="text-lg font-semibold text-white">{product.name}</h3>
-                                        <div className="flex flex-col gap-1 mt-2">
-                                            <div className="flex items-baseline gap-1">
-                                                <span className="text-4xl font-bold text-white">{priceString}</span>
-                                                <span className="text-muted-foreground text-sm">/month</span>
-                                                {billingInterval === 'year' && (
-                                                    <div className="flex gap-2 ml-2">
-                                                        <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
-                                                            Best Value
-                                                        </Badge>
-                                                        {monthsFree > 0 && (
-                                                            <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30">
-                                                                {monthsFree} months free
-                                                            </Badge>
-                                                        )}
-                                                    </div>
-                                                )}
-                                            </div>
-                                        </div>
-                                        <p className="text-sm text-muted-foreground mt-2">{product.description}</p>
+                            <div
+                                key={product.id}
+                                className={`relative bg-card border rounded-xl p-6 ${isPopular ? "border-white/30 glow-white" : "border-border"}`}
+                            >
+                                {isPopular && (
+                                    <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                                        <Badge className="bg-white text-black">Popular</Badge>
                                     </div>
+                                )}
+                                {isCurrent && (
+                                    <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                                        <Badge variant="outline">Current</Badge>
+                                    </div>
+                                )}
 
-                                    <Button
-                                        loading={priceIdLoading === price.id}
-                                        onClick={() => handleStripeCheckout(price)}
-                                        className={`w-full mb-6 ${isPopular
-                                            ? "bg-white hover:bg-zinc-100 text-black"
-                                            : isCurrent
-                                                ? "bg-secondary"
-                                                : "bg-secondary hover:bg-secondary/80"
-                                            }`}
-                                        variant={isCurrent ? "outline" : "default"}
-                                    >
-                                        {subscription ? 'Manage' : 'Subscribe'}
-                                    </Button>
-
-                                    <ul className="space-y-3">
-                                        <li className="flex items-start gap-2 text-sm">
-                                            <Check className="w-4 h-4 text-white mt-0.5 flex-shrink-0" />
-                                            <span className="text-muted-foreground">
-                                                {product.name === 'Starter' ? 'Basic focus enforcement' : 'Nuclear-level app blocking'}
-                                            </span>
-                                        </li>
-                                        <li className="flex items-start gap-2 text-sm">
-                                            <Check className="w-4 h-4 text-white mt-0.5 flex-shrink-0" />
-                                            <span className="text-muted-foreground">
-                                                {product.name === 'Starter' ? '1 device support' : 'Sync across all devices'}
-                                            </span>
-                                        </li>
-                                        <li className="flex items-start gap-2 text-sm">
-                                            <Check className="w-4 h-4 text-white mt-0.5 flex-shrink-0" />
-                                            <span className="text-muted-foreground">
-                                                {product.name === 'Elite' ? 'Priority human support' : 'ADHD mode algorithms'}
-                                            </span>
-                                        </li>
-                                        {isPopular && (
-                                            <li className="flex items-start gap-2 text-sm">
-                                                <Check className="w-4 h-4 text-white mt-0.5 flex-shrink-0" />
-                                                <span className="text-muted-foreground font-medium text-white">Full eye-tracking analytics</span>
-                                            </li>
-                                        )}
-                                    </ul>
+                                <div className="mb-4">
+                                    <h3 className="text-lg font-semibold text-white">{product.name}</h3>
+                                    <div className="flex flex-col gap-1 mt-2">
+                                        <div className="flex items-baseline gap-1">
+                                            <span className="text-4xl font-bold text-white">{priceString}</span>
+                                            <span className="text-muted-foreground text-sm">/month</span>
+                                            {billingInterval === 'year' && (
+                                                <div className="flex gap-2 ml-2">
+                                                    <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
+                                                        Best Value
+                                                    </Badge>
+                                                    {monthsFree > 0 && (
+                                                        <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30">
+                                                            {monthsFree} months free
+                                                        </Badge>
+                                                    )}
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                    <p className="text-sm text-muted-foreground mt-2">{product.description}</p>
                                 </div>
-                            </ScrollAnimation>
+
+                                <Button
+                                    loading={priceIdLoading === price.id}
+                                    onClick={() => handleStripeCheckout(price)}
+                                    className={`w-full mb-6 ${isPopular
+                                        ? "bg-white hover:bg-zinc-100 text-black"
+                                        : isCurrent
+                                            ? "bg-secondary"
+                                            : "bg-secondary hover:bg-secondary/80"
+                                        }`}
+                                    variant={isCurrent ? "outline" : "default"}
+                                >
+                                    {subscription ? 'Manage' : 'Subscribe'}
+                                </Button>
+
+                                <ul className="space-y-3">
+                                    <li className="flex items-start gap-2 text-sm">
+                                        <Check className="w-4 h-4 text-white mt-0.5 flex-shrink-0" />
+                                        <span className="text-muted-foreground">
+                                            {product.name === 'Starter' ? 'Basic focus enforcement' : 'Nuclear-level app blocking'}
+                                        </span>
+                                    </li>
+                                    <li className="flex items-start gap-2 text-sm">
+                                        <Check className="w-4 h-4 text-white mt-0.5 flex-shrink-0" />
+                                        <span className="text-muted-foreground">
+                                            {product.name === 'Starter' ? '1 device support' : 'Sync across all devices'}
+                                        </span>
+                                    </li>
+                                    <li className="flex items-start gap-2 text-sm">
+                                        <Check className="w-4 h-4 text-white mt-0.5 flex-shrink-0" />
+                                        <span className="text-muted-foreground">
+                                            {product.name === 'Elite' ? 'Priority human support' : 'ADHD mode algorithms'}
+                                        </span>
+                                    </li>
+                                    {isPopular && (
+                                        <li className="flex items-start gap-2 text-sm">
+                                            <Check className="w-4 h-4 text-white mt-0.5 flex-shrink-0" />
+                                            <span className="text-muted-foreground font-medium text-white">Full eye-tracking analytics</span>
+                                        </li>
+                                    )}
+                                </ul>
+                            </div>
                         );
                     })}
                 </div>
             </div>
-        </section>
+        </section >
     );
 }
 
@@ -794,7 +788,7 @@ export function GlobalStatsSection() {
             <div className="max-w-6xl mx-auto">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
                     <div className="relative z-10">
-                        <ScrollAnimation animation="fade-in-left">
+                        <div>
                             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
                                 Warriors worldwide
                                 <br />
@@ -804,27 +798,21 @@ export function GlobalStatsSection() {
                                 Join thousands of reformed procrastinators who use StudyEXE to destroy
                                 distractions, demolish ADHD, and dominate their goals.
                             </p>
-                        </ScrollAnimation>
+                        </div>
 
                         <div className="grid grid-cols-3 gap-8">
-                            <ScrollAnimation animation="fade-in-up" delay={200}>
-                                <div>
-                                    <div className="text-3xl font-bold text-white">50K+</div>
-                                    <div className="text-sm text-muted-foreground">Warriors</div>
-                                </div>
-                            </ScrollAnimation>
-                            <ScrollAnimation animation="fade-in-up" delay={300}>
-                                <div>
-                                    <div className="text-3xl font-bold text-white">8.4M</div>
-                                    <div className="text-sm text-muted-foreground">Hours Reclaimed</div>
-                                </div>
-                            </ScrollAnimation>
-                            <ScrollAnimation animation="fade-in-up" delay={400}>
-                                <div>
-                                    <div className="text-3xl font-bold text-white">127+</div>
-                                    <div className="text-sm text-muted-foreground">Countries</div>
-                                </div>
-                            </ScrollAnimation>
+                            <div>
+                                <div className="text-3xl font-bold text-white">50K+</div>
+                                <div className="text-sm text-muted-foreground">Warriors</div>
+                            </div>
+                            <div>
+                                <div className="text-3xl font-bold text-white">8.4M</div>
+                                <div className="text-sm text-muted-foreground">Hours Reclaimed</div>
+                            </div>
+                            <div>
+                                <div className="text-3xl font-bold text-white">127+</div>
+                                <div className="text-sm text-muted-foreground">Countries</div>
+                            </div>
                         </div>
                     </div>
 
@@ -879,31 +867,27 @@ export function FAQSection() {
     return (
         <section id="faq" className="py-24 px-4 bg-secondary/30">
             <div className="max-w-3xl mx-auto">
-                <ScrollAnimation animation="fade-in-up">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">Frequently asked questions</h2>
-                        <p className="text-muted-foreground">Everything you need to know about StudyEXE</p>
-                    </div>
-                </ScrollAnimation>
+                <div className="text-center mb-16">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">Frequently asked questions</h2>
+                    <p className="text-muted-foreground">Everything you need to know about StudyEXE</p>
+                </div>
 
-                <ScrollAnimation animation="fade-in-up" delay={200}>
-                    <Accordion type="single" collapsible className="space-y-4">
-                        {faqs.map((faq, i) => (
-                            <AccordionItem
-                                key={i}
-                                value={`item-${i}`}
-                                className="bg-card border border-border rounded-xl px-6"
-                            >
-                                <AccordionTrigger className="text-left hover:no-underline py-4 text-white">
-                                    {faq.question}
-                                </AccordionTrigger>
-                                <AccordionContent className="text-muted-foreground pb-4">
-                                    {faq.answer}
-                                </AccordionContent>
-                            </AccordionItem>
-                        ))}
-                    </Accordion>
-                </ScrollAnimation>
+                <Accordion type="single" collapsible className="space-y-4">
+                    {faqs.map((faq, i) => (
+                        <AccordionItem
+                            key={i}
+                            value={`item-${i}`}
+                            className="bg-card border border-border rounded-xl px-6"
+                        >
+                            <AccordionTrigger className="text-left hover:no-underline py-4 text-white">
+                                {faq.question}
+                            </AccordionTrigger>
+                            <AccordionContent className="text-muted-foreground pb-4">
+                                {faq.answer}
+                            </AccordionContent>
+                        </AccordionItem>
+                    ))}
+                </Accordion>
             </div>
         </section>
     );
