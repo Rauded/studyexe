@@ -13,7 +13,7 @@ const inter = Inter({
   display: 'swap',
 });
 
-const title = 'study.exe';
+const title = 'study.exe / kill your distractions';
 const description = 'Kill your distractions. Reclaim your focus. Study or die trying.';
 
 export const metadata: Metadata = {
