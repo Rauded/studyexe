@@ -11,7 +11,7 @@ export const getUser = cache(async (supabase: SupabaseClient<any, any, any>) => 
 export const getSubscription = cache(async (supabase: SupabaseClient<any, any, any>) => {
   const { data: subscription, error } = await supabase
     .from('subscriptions')
-    .select('*')
+    .select('*, prices(*, products(*))')
     .maybeSingle();
 
   return subscription;
