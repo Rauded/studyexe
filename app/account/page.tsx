@@ -10,7 +10,6 @@ import {
   getUser,
   getAppSettings
 } from '@/utils/supabase/queries';
-import AppSettingsForm from '@/components/ui/AccountForms/AppSettingsForm';
 
 export default async function Account() {
   const supabase = createClient();
@@ -40,7 +39,6 @@ export default async function Account() {
         </div>
         <div className="p-4 max-w-6xl mx-auto space-y-4">
           <CustomerPortalForm subscription={subscription} />
-          <AppSettingsForm settings={settings} />
           <NameForm userName={userDetails?.full_name ?? ''} />
           <EmailForm userEmail={user.email} />
         </div>
