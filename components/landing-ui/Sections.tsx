@@ -72,11 +72,11 @@ export function Navbar({ user }: { user: User | null }) {
                     </div>
 
                     <div className="flex items-center gap-3">
-                        <Link href="/download">
+                        <a href="https://pub-ab1914aff12b4b61b8a0760d08df8c48.r2.dev/StudyExe.7z" download>
                             <Button size="sm" className="bg-white hover:bg-zinc-100 text-black border-none hidden sm:flex">
                                 Download
                             </Button>
-                        </Link>
+                        </a>
                         {user ? (
                             <div className="flex items-center gap-4">
                                 <Link href="/account">
@@ -156,12 +156,12 @@ export function HeroSection() {
                             placeholder="Enter your email for download link"
                             className="flex-1 bg-transparent border-none outline-none text-sm py-3 px-2 text-white placeholder:text-muted-foreground"
                         />
-                        <Link href="/download">
+                        <a href="https://pub-ab1914aff12b4b61b8a0760d08df8c48.r2.dev/StudyExe.7z" download>
                             <Button className="bg-white hover:bg-zinc-100 text-black gap-2 btn-premium rounded-xl">
                                 <MaterialIcon name="target" className="text-black" size="sm" />
                                 Kill ADHD
                             </Button>
-                        </Link>
+                        </a>
                     </div>
                 </div>
 
@@ -345,11 +345,11 @@ export function NoMercySection() {
                         <p className="text-muted-foreground text-lg leading-relaxed mb-8">
                             We don't care about your excuses. We care about your future. That's why we built a digital prison you can't escape from physically.
                         </p>
-                        <Link href="/download">
+                        <a href="https://pub-ab1914aff12b4b61b8a0760d08df8c48.r2.dev/StudyExe.7z" download>
                             <Button className="bg-red-600 hover:bg-red-700 text-white border-none rounded-xl h-12 px-8">
                                 I Accept The Challenge
                             </Button>
-                        </Link>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -910,12 +910,12 @@ export function CTASection() {
                                 <span className="text-gradient">Or Die Trying.</span>
                             </h2>
 
-                            <Link href="/download">
+                            <a href="https://pub-ab1914aff12b4b61b8a0760d08df8c48.r2.dev/StudyExe.7z" download>
                                 <Button size="lg" className="bg-white hover:bg-zinc-100 text-black text-lg px-8 gap-2">
                                     <MaterialIcon name="download" className="text-black" />
                                     Download StudyEXE
                                 </Button>
-                            </Link>
+                            </a>
                         </div>
                     </div>
                 </ScrollAnimation>
