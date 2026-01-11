@@ -34,13 +34,13 @@ export default function AppSettingsForm({ settings }: Props) {
             return;
         }
 
-        const { error } = await supabase
+        const { error } = await (supabase as any)
             .from('app_settings')
             .update({
                 strict_mode: strictMode,
                 eye_tracking: eyeTracking,
                 session_length: sessionLength
-            } as any)
+            })
             .eq('user_id', user.id);
 
         if (error) {

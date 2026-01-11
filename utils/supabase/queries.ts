@@ -38,7 +38,7 @@ export const getUserDetails = cache(async (supabase: SupabaseClient<any, any, an
 });
 
 export const getAppSettings = cache(async (supabase: SupabaseClient<any, any, any>) => {
-  const { data: settings } = await supabase
+  const { data: settings } = await (supabase as any)
     .from('app_settings')
     .select('*')
     .single();
