@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Button } from "./button";
 import { MaterialIcon } from "./MaterialIcon";
 import { ScrollAnimation } from "../ui/ScrollAnimation";
+import Link from "next/link";
 
 const ASCII_ART = `
 :::::---:-:::::::.:-::--:-::::::----:::::::::::::::::::::::::::::::::::::::::::::.:..:::::::::..::::::::::::.:::::...................::::::::::::::::::::--------::::::::::::::::::::::-:::::::::::::::::::::::....  .......:.:......::::.:......::::::::::::::.......:::::::::::...
@@ -362,10 +363,12 @@ export function AsciiArtSection() {
                                 <span className="text-gradient">Or Die Trying.</span>
                             </h2>
 
-                            <Button size="lg" className="bg-white hover:bg-zinc-100 text-black text-lg px-8 gap-2 rounded-xl">
-                                <MaterialIcon name="download" className="text-black" />
-                                Download StudyEXE
-                            </Button>
+                            <Link href="/download">
+                                <Button size="lg" className="bg-white hover:bg-zinc-100 text-black text-lg px-8 gap-2 rounded-xl">
+                                    <MaterialIcon name="download" className="text-black" />
+                                    Download StudyEXE
+                                </Button>
+                            </Link>
                         </div>
                     </ScrollAnimation>
                 </div>
