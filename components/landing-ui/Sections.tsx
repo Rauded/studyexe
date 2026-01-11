@@ -649,11 +649,19 @@ export function PricingSection({
                         );
                         if (!price) return null;
 
+                        const unitAmount = price?.unit_amount || 0;
+                        const displayPrice = billingInterval === 'year' ? unitAmount / 12 : unitAmount;
                         const priceString = new Intl.NumberFormat('en-US', {
                             style: 'currency',
                             currency: price.currency!,
                             minimumFractionDigits: 0
-                        }).format((price?.unit_amount || 0) / 100);
+                        }).format(displayPrice / 100);
+
+                        const fullPriceString = new Intl.NumberFormat('en-US', {
+                            style: 'currency',
+                            currency: price.currency!,
+                            minimumFractionDigits: 0
+                        }).format(unitAmount / 100);
 
                         const isPopular = product.name?.toLowerCase().includes('pro');
                         const isCurrent = subscription ? product.id === subscription?.prices?.products?.id : false;
@@ -676,13 +684,20 @@ export function PricingSection({
 
                                     <div className="mb-4">
                                         <h3 className="text-lg font-semibold text-white">{product.name}</h3>
-                                        <div className="flex items-baseline gap-1 mt-2">
-                                            <span className="text-4xl font-bold text-white">{priceString}</span>
-                                            <span className="text-muted-foreground">/{billingInterval}</span>
+                                        <div className="flex flex-col gap-1 mt-2">
+                                            <div className="flex items-baseline gap-1">
+                                                <span className="text-4xl font-bold text-white">{priceString}</span>
+                                                <span className="text-muted-foreground text-sm">/month</span>
+                                                {billingInterval === 'year' && (
+                                                    <Badge className="ml-2 bg-green-500/20 text-green-400 border-green-500/30">
+                                                        Best Value
+                                                    </Badge>
+                                                )}
+                                            </div>
                                             {billingInterval === 'year' && (
-                                                <Badge className="ml-2 bg-green-500/20 text-green-400 border-green-500/30">
-                                                    Best Value
-                                                </Badge>
+                                                <div className="text-xs text-muted-foreground">
+                                                    {fullPriceString} billed annually
+                                                </div>
                                             )}
                                         </div>
                                         <p className="text-sm text-muted-foreground mt-2">{product.description}</p>
