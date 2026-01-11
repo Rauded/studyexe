@@ -17,3 +17,4 @@
 - Brand: StudyEXE - The ADHD Killer desktop app
 - Tagline: "Study or Die"
 - Key messaging: Forces you to study, blocks distractions, no escape
+we doing good
