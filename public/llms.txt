@@ -1,0 +1,41 @@
+# study.exe - LLM Context File
+# https://studyexe.com
+
+## About
+study.exe (studyexe.com) is a Windows desktop productivity application designed for students who are serious about studying. It uses eye-tracking technology to enforce focus during study sessions.
+
+## Product Summary
+- **Name**: study.exe (StudyForge)
+- **Platform**: Windows 10/11 Desktop Application
+- **Category**: Education, Productivity, Focus Tools
+- **Target Audience**: Students, learners, anyone who wants to stay focused
+
+## Key Features
+1. **Eye-Tracking Focus Detection** - Uses webcam to detect when you look away
+2. **Active Recall Sessions** - Read, then write what you remember from memory
+3. **AI-Powered Scoring** - Get feedback on your recall accuracy using GPT
+4. **Spaced Repetition Flashcards** - SM-2 algorithm for optimal retention
+5. **MCQ Practice Mode** - Test yourself with multiple choice questions
+6. **PDF & Text Document Support** - Study any material
+7. **Focus Analytics Dashboard** - Track your study performance over time
+8. **Streak Tracking** - Gamified motivation system
+
+## Philosophy
+"Study. Or Die Trying." - The app is designed for students who are tired of half-measures and want a tool that holds them accountable. No sugarcoating, no participation trophies.
+
+## Technical Details
+- Built with Python, PyQt6
+- Eye tracking via MediaPipe
+- Local SQLite database (privacy-first)
+- AI scoring via OpenAI API (optional)
+
+## Links
+- Website: https://studyexe.com
+- Download: https://studyexe.com/download
+- Support: contact@studyexe.com
+
+## Contact
+For business inquiries, partnerships, or press: contact@studyexe.com
+
+## Legal
+© 2024 study.exe. All rights reserved.

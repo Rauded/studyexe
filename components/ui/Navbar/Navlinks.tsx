@@ -32,7 +32,10 @@ export default function Navlinks({ user }: NavlinksProps) {
           )}
         </nav>
       </div>
-      <div className="flex justify-end space-x-8">
+      <div className="flex justify-end space-x-8 items-center">
+        <Link href="/" className={s.link}>
+          Download
+        </Link>
         {user ? (
           <form onSubmit={(e) => handleRequest(e, SignOut, router)}>
             <input type="hidden" name="pathName" value={usePathname()} />

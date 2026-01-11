@@ -72,6 +72,9 @@ export function Navbar({ user }: { user: User | null }) {
                     </div>
 
                     <div className="flex items-center gap-3">
+                        <Button size="sm" className="bg-white hover:bg-zinc-100 text-black border-none hidden sm:flex">
+                            Download
+                        </Button>
                         {user ? (
                             <div className="flex items-center gap-4">
                                 <Link href="/account">
@@ -89,14 +92,9 @@ export function Navbar({ user }: { user: User | null }) {
                                 </form>
                             </div>
                         ) : (
-                            <>
-                                <Link href="/signin">
-                                    <Button variant="ghost" size="sm" className="text-white hover:text-white">Sign in</Button>
-                                </Link>
-                                <Button size="sm" className="bg-white hover:bg-zinc-100 text-black border-none">
-                                    Download
-                                </Button>
-                            </>
+                            <Link href="/signin">
+                                <Button variant="ghost" size="sm" className="text-white hover:text-white">Sign in</Button>
+                            </Link>
                         )}
                     </div>
                 </div>
