@@ -147,6 +147,10 @@ export default function Pricing({ user, products, subscription }: Props) {
                 (price) => price.interval === billingInterval
               );
               if (!price) return null;
+              const monthlyPrice = product?.prices?.find(p => p.interval === 'month')?.unit_amount || 0;
+              const yearlyPrice = product?.prices?.find(p => p.interval === 'year')?.unit_amount || 0;
+              const monthsFree = monthlyPrice > 0 ? Math.round(12 - (yearlyPrice / monthlyPrice)) : 0;
+
               const unitAmount = price?.unit_amount || 0;
               const displayPrice = billingInterval === 'year' ? unitAmount / 12 : unitAmount;
               const priceString = new Intl.NumberFormat('en-US', {
@@ -181,6 +185,11 @@ export default function Pricing({ user, products, subscription }: Props) {
                       <span className="text-base font-medium text-zinc-100">
                         /month
                       </span>
+                      {billingInterval === 'year' && monthsFree > 0 && (
+                        <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-500/20 text-green-400 border border-green-500/30">
+                          {monthsFree} months free
+                        </span>
+                      )}
                     </p>
                     <Button
                       variant="slim"
