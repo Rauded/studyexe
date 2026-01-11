@@ -11,8 +11,7 @@ export const getUser = cache(async (supabase: SupabaseClient<any, any, any>) => 
 export const getSubscription = cache(async (supabase: SupabaseClient<any, any, any>) => {
   const { data: subscription, error } = await supabase
     .from('subscriptions')
-    .select('*, prices(*, products(*))')
-    .in('status', ['trialing', 'active'])
+    .select('*')
     .maybeSingle();
 
   return subscription;
@@ -32,8 +31,16 @@ export const getProducts = cache(async (supabase: SupabaseClient<any, any, any>)
 
 export const getUserDetails = cache(async (supabase: SupabaseClient<any, any, any>) => {
   const { data: userDetails } = await supabase
-    .from('users')
+    .from('profiles')
     .select('*')
     .single();
   return userDetails;
+});
+
+export const getAppSettings = cache(async (supabase: SupabaseClient<any, any, any>) => {
+  const { data: settings } = await supabase
+    .from('app_settings')
+    .select('*')
+    .single();
+  return settings;
 });

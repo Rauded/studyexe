@@ -12,16 +12,8 @@ type Subscription = Tables<'subscriptions'>;
 type Price = Tables<'prices'>;
 type Product = Tables<'products'>;
 
-type SubscriptionWithPriceAndProduct = Subscription & {
-  prices:
-    | (Price & {
-        products: Product | null;
-      })
-    | null;
-};
-
 interface Props {
-  subscription: SubscriptionWithPriceAndProduct | null;
+  subscription: any;
 }
 
 export default function CustomerPortalForm({ subscription }: Props) {
@@ -29,13 +21,10 @@ export default function CustomerPortalForm({ subscription }: Props) {
   const currentPath = usePathname();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const subscriptionPrice =
-    subscription &&
-    new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: subscription?.prices?.currency!,
-      minimumFractionDigits: 0
-    }).format((subscription?.prices?.unit_amount || 0) / 100);
+  // Fallback for old schema vs new flat schema
+  const planName = subscription?.plan || subscription?.prices?.products?.name || 'Unknown';
+  const status = subscription?.status || 'Active';
+  const expiresAt = subscription?.expires_at ? new Date(subscription.expires_at).toLocaleDateString() : null;
 
   const handleStripePortalRequest = async () => {
     setIsSubmitting(true);
@@ -49,7 +38,7 @@ export default function CustomerPortalForm({ subscription }: Props) {
       title="Your Plan"
       description={
         subscription
-          ? `You are currently on the ${subscription?.prices?.products?.name} plan.`
+          ? `You are currently on the ${planName} plan. Status: ${status}`
           : 'You are not currently subscribed to any plan.'
       }
       footer={
@@ -67,7 +56,7 @@ export default function CustomerPortalForm({ subscription }: Props) {
     >
       <div className="mt-8 mb-4 text-xl font-semibold">
         {subscription ? (
-          `${subscriptionPrice}/${subscription?.prices?.interval}`
+          expiresAt ? `Renews/Expires on: ${expiresAt}` : 'Subscription Active'
         ) : (
           <Link href="/">Choose your plan</Link>
         )}
