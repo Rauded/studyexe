@@ -110,7 +110,7 @@ export function HeroSection() {
     const rotatingWords = ["procrastination", "distractions", "excuses", "social media", "your weakness", "procrastination"];
 
     return (
-        <section className="pt-32 pb-20 px-4 relative overflow-hidden aurora-bg">
+        <section id="hero" className="pt-32 pb-20 px-4 relative overflow-hidden aurora-bg">
             {/* Background gradient */}
             <div className="absolute inset-0 bg-gradient-to-b from-zinc-800/20 via-transparent to-transparent pointer-events-none" />
             <div className="absolute top-20 left-1/4 w-96 h-96 bg-white/[0.02] rounded-full blur-3xl animate-float-slow" />
@@ -188,7 +188,7 @@ export function StatsSection() {
     ];
 
     return (
-        <section className="py-20 px-4 border-y border-border/50 glass">
+        <section id="stats" className="py-20 px-4 border-y border-border/50 glass">
             <div className="max-w-6xl mx-auto">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                     {stats.map((stat, i) => (
@@ -218,7 +218,7 @@ export function WhoNotForSection() {
     ];
 
     return (
-        <section className="py-20 px-4 relative overflow-hidden">
+        <section id="who-not-for" className="py-20 px-4 relative overflow-hidden">
             {/* Big Sad Face decoration */}
             <div className="absolute top-1/2 -right-20 lg:right-10 -translate-y-1/2 opacity-10 pointer-events-none select-none">
                 <MaterialIcon name="sentiment_very_dissatisfied" className="text-red-500 !text-[300px]" />
@@ -252,7 +252,7 @@ export function WhoNotForSection() {
 // Reality Check Section
 export function RealityCheckSection() {
     return (
-        <section className="py-24 px-4 bg-red-950/10 border-y border-red-900/20 relative overflow-hidden">
+        <section id="reality-check" className="py-24 px-4 bg-red-950/10 border-y border-red-900/20 relative overflow-hidden">
             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150"></div>
             <div className="max-w-4xl mx-auto text-center relative z-10">
                 <div className="inline-flex items-center gap-2 mb-6">
@@ -313,7 +313,7 @@ export function TruthSection() {
 // No Mercy Section
 export function NoMercySection() {
     return (
-        <section className="py-24 px-4 bg-zinc-950 border-y border-red-900/20 relative">
+        <section id="no-mercy" className="py-24 px-4 bg-zinc-950 border-y border-red-900/20 relative">
             <div className="max-w-5xl mx-auto">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
                     <div className="order-2 md:order-1">
@@ -508,7 +508,7 @@ export function TestimonialsSection() {
     ];
 
     return (
-        <section className="py-24 px-4 overflow-hidden">
+        <section id="testimonials" className="py-24 px-4 overflow-hidden">
             <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">Loved by survivors</h2>
@@ -781,10 +781,9 @@ export function PricingSection({
     );
 }
 
-// Global Stats Section
 export function GlobalStatsSection() {
     return (
-        <section className="py-24 px-4">
+        <section id="global-stats" className="py-24 px-4">
             <div className="max-w-6xl mx-auto">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
                     <div className="relative z-10">
@@ -896,7 +895,7 @@ export function FAQSection() {
 // CTA Section
 export function CTASection() {
     return (
-        <section className="py-24 px-4">
+        <section id="cta" className="py-24 px-4">
             <div className="max-w-4xl mx-auto">
                 <ScrollAnimation animation="scale-in">
                     <div className="relative bg-gradient-to-br from-zinc-800/50 via-card to-card border border-zinc-700/50 rounded-3xl p-12 text-center overflow-hidden">
@@ -927,7 +926,7 @@ export function CTASection() {
 // Footer
 export function LandingFooter() {
     return (
-        <footer className="border-t border-border py-12 px-4">
+        <footer id="footer" className="border-t border-border py-12 px-4">
             <div className="max-w-6xl mx-auto">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-12">
                     <div className="flex items-center gap-2">

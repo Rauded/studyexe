@@ -352,7 +352,7 @@ export function AsciiArtSection() {
     // Auto-scroll logic removed to prevent scroll hijacking
 
     return (
-        <section className="bg-black overflow-hidden flex flex-col items-center relative" ref={containerRef}>
+        <section id="ascii-art" className="bg-black overflow-hidden flex flex-col items-center relative" ref={containerRef}>
             {/* CTA Content - Above ASCII Art */}
             <div className="w-full pt-20 z-10" ref={ctaRef}>
                 <div className="max-w-4xl mx-auto text-center px-4">

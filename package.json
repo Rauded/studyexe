@@ -19,7 +19,8 @@
     "supabase:generate-migration": "npx supabase db diff | npx supabase migration new",
     "supabase:generate-seed": "npx supabase db dump --data-only -f supabase/seed.sql",
     "supabase:push": "npx supabase db push",
-    "supabase:pull": "npx supabase db pull"
+    "supabase:pull": "npx supabase db pull",
+    "screenshot": "ts-node scripts/take-screenshots.ts"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.12",
@@ -55,7 +56,12 @@
     "prettier": "^3.3.1",
     "prettier-plugin-tailwindcss": "^0.5.14",
     "supabase": "^1.172.2",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "playwright": "^1.44.1",
+    "sharp": "^0.33.4",
+    "ts-node": "^10.9.2",
+    "fs-extra": "^11.2.0",
+    "@types/fs-extra": "^11.0.4"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
