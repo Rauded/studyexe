@@ -44,8 +44,8 @@ interface SubscriptionWithProduct extends Subscription {
 type BillingInterval = 'lifetime' | 'year' | 'month';
 
 
-// Navbar Component
-export function Navbar({ user }: { user: User | null }) {
+// Old Unused Navbar Component
+export function OldUnusedNavbar({ user }: { user: User | null }) {
     const router = useRouter();
 
     return (
@@ -923,8 +923,8 @@ export function CTASection() {
     );
 }
 
-// Footer
-export function LandingFooter() {
+// Old Unused Footer
+export function OldUnusedLandingFooter() {
     return (
         <footer id="footer" className="border-t border-border py-12 px-4">
             <div className="max-w-6xl mx-auto">

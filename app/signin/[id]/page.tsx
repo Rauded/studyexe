@@ -1,5 +1,4 @@
 import Logo from '@/components/icons/Logo';
-import Footer from '@/components/ui/Footer';
 import { createClient } from '@/utils/supabase/server';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
@@ -110,7 +109,6 @@ export default async function SignIn({
           </Card>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

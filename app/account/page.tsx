@@ -1,5 +1,4 @@
 import CustomerPortalForm from '@/components/ui/AccountForms/CustomerPortalForm';
-import Footer from '@/components/ui/Footer';
 import EmailForm from '@/components/ui/AccountForms/EmailForm';
 import NameForm from '@/components/ui/AccountForms/NameForm';
 import { redirect } from 'next/navigation';
@@ -43,7 +42,6 @@ export default async function Account() {
           <EmailForm userEmail={user.email} />
         </div>
       </section>
-      <Footer />
     </>
   );
 }
