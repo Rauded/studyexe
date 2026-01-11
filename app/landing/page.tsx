@@ -26,7 +26,7 @@ import { cookies } from 'next/headers';
 export default async function LandingPage() {
     const supabase = createClient();
     const cookieStore = cookies();
-    const tier = parseInt(cookieStore.get('pricing-tier')?.value || '2');
+    const tier = parseInt(cookieStore.get('pricing-tier')?.value || '7');
 
     const [user, products, subscription] = await Promise.all([
         getUser(supabase),

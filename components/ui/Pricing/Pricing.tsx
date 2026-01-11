@@ -33,7 +33,7 @@ interface Props {
 
 type BillingInterval = 'lifetime' | 'year' | 'month';
 
-export default function Pricing({ user, products, subscription, tier = 2 }: Props) {
+export default function Pricing({ user, products, subscription, tier = 7 }: Props) {
   const intervals = Array.from(
     new Set(
       products.flatMap((product) =>
@@ -115,7 +115,7 @@ export default function Pricing({ user, products, subscription, tier = 2 }: Prop
               Start building for free, then add a site plan to go live. Account
               plans unlock additional features.
             </p>
-            {tier !== 2 && (
+            {tier !== 7 && (
               <div className="mt-4 self-center inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium">
                 Localized Pricing Active (Tier {tier})
               </div>
@@ -149,23 +149,23 @@ export default function Pricing({ user, products, subscription, tier = 2 }: Prop
           </div>
           <div className="mt-12 space-y-0 sm:mt-16 flex flex-wrap justify-center gap-6 lg:max-w-4xl lg:mx-auto xl:max-w-none xl:mx-0">
             {products.map((product) => {
-              const tierSuffix = tier === 2 ? '' : `_tier${tier}`;
+              const tierSuffix = tier === 7 ? '' : `_tier${tier}`;
               const price = product?.prices?.find((p) => {
                 const priceAny = p as any;
                 const isInterval = p.interval === billingInterval;
-                if (!priceAny.lookup_key) return isInterval && tier === 2;
-                if (tier === 2) return isInterval && !priceAny.lookup_key.includes('_tier');
+                if (!priceAny.lookup_key) return isInterval && tier === 7;
+                if (tier === 7) return isInterval && !priceAny.lookup_key.includes('_tier');
                 return isInterval && priceAny.lookup_key.endsWith(tierSuffix);
               });
               if (!price) return null;
               const monthlyPrice = product?.prices?.find(p => {
                 const priceAny = p as any;
-                return p.interval === 'month' && (tier === 2 ? !priceAny.lookup_key?.includes('_tier') : priceAny.lookup_key?.endsWith(tierSuffix));
+                return p.interval === 'month' && (tier === 7 ? !priceAny.lookup_key?.includes('_tier') : priceAny.lookup_key?.endsWith(tierSuffix));
               })?.unit_amount || 0;
 
               const yearlyPrice = product?.prices?.find(p => {
                 const priceAny = p as any;
-                return p.interval === 'year' && (tier === 2 ? !priceAny.lookup_key?.includes('_tier') : priceAny.lookup_key?.endsWith(tierSuffix));
+                return p.interval === 'year' && (tier === 7 ? !priceAny.lookup_key?.includes('_tier') : priceAny.lookup_key?.endsWith(tierSuffix));
               })?.unit_amount || 0;
 
               const monthsFree = monthlyPrice > 0 ? Math.round(12 - (yearlyPrice / monthlyPrice)) : 0;

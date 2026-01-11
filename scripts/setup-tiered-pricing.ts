@@ -51,10 +51,10 @@ async function setup() {
 
         for (const [tierStr, multiplier] of Object.entries(TIER_MULTIPLIERS)) {
             const tier = parseInt(tierStr);
-            if (tier === 2) continue; // Skip base tier
+            if (tier === 7) continue; // Skip the base tier
 
             // Create Monthly Price for this Tier
-            const monthlyAmount = Math.round((monthlyBase.unit_amount || 0) * multiplier);
+            const monthlyAmount = Math.floor((monthlyBase.unit_amount || 0) * multiplier);
             const monthlyLookup = `${baseLookupMonthly}_tier${tier}`;
 
             console.log(`   🔹 Tier ${tier} (${Math.round(multiplier * 100)}%): Monthly ${monthlyAmount} cents, Lookup: ${monthlyLookup}`);

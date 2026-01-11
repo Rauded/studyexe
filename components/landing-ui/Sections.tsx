@@ -547,7 +547,7 @@ export function PricingSection({
     user,
     products,
     subscription,
-    tier = 2
+    tier = 7
 }: {
     user: User | null;
     products: ProductWithPrices[];
@@ -616,7 +616,7 @@ export function PricingSection({
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">Simple, brutal pricing</h2>
                     <p className="text-muted-foreground mb-8">Choose your weapon. Cancel anytime (if you dare).</p>
-                    {tier !== 2 && (
+                    {tier !== 7 && (
                         <div className="mb-4 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium">
                             Localized Pricing Active (Tier {tier})
                         </div>
@@ -655,30 +655,30 @@ export function PricingSection({
                         const price = product?.prices?.find(p => {
                             const priceAny = p as any;
                             const isInterval = p.interval === billingInterval;
-                            const tierSuffix = tier === 2 ? '' : `_tier${tier}`;
+                            const tierSuffix = tier === 7 ? '' : `_tier${tier}`;
 
                             // Check if lookup_key matches the pattern [base]_tier[n]
                             // If p.lookup_key is null, we might have to fallback to default logic
-                            if (!priceAny.lookup_key) return isInterval && tier === 2;
+                            if (!priceAny.lookup_key) return isInterval && tier === 7;
 
-                            // If tier is 2, we want prices without _tier suffix
-                            if (tier === 2) return isInterval && !priceAny.lookup_key.includes('_tier');
+                            // If tier is 7, we want prices without _tier suffix
+                            if (tier === 7) return isInterval && !priceAny.lookup_key.includes('_tier');
 
-                            // If tier is not 2, we want exact matches for the suffix
+                            // If tier is not 7, we want exact matches for the suffix
                             return isInterval && priceAny.lookup_key.endsWith(tierSuffix);
                         });
 
                         if (!price) return null;
 
-                        const tierSuffix = tier === 2 ? '' : `_tier${tier}`;
+                        const tierSuffix = tier === 7 ? '' : `_tier${tier}`;
                         const monthlyPrice = product?.prices?.find(p => {
                             const priceAny = p as any;
-                            return p.interval === 'month' && (tier === 2 ? !priceAny.lookup_key?.includes('_tier') : priceAny.lookup_key?.endsWith(tierSuffix));
+                            return p.interval === 'month' && (tier === 7 ? !priceAny.lookup_key?.includes('_tier') : priceAny.lookup_key?.endsWith(tierSuffix));
                         })?.unit_amount || 0;
 
                         const yearlyPrice = product?.prices?.find(p => {
                             const priceAny = p as any;
-                            return p.interval === 'year' && (tier === 2 ? !priceAny.lookup_key?.includes('_tier') : priceAny.lookup_key?.endsWith(tierSuffix));
+                            return p.interval === 'year' && (tier === 7 ? !priceAny.lookup_key?.includes('_tier') : priceAny.lookup_key?.endsWith(tierSuffix));
                         })?.unit_amount || 0;
 
                         const monthsFree = monthlyPrice > 0 ? Math.round(12 - (yearlyPrice / monthlyPrice)) : 0;

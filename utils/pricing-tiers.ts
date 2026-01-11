@@ -1,45 +1,85 @@
-export type PricingTier = 1 | 2 | 3 | 4 | 5 | 6 | 7;
+export type PricingTier = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
 
+/**
+ *
+ * BASELINE  month   | 6.99     | 9.99  | 14.99   |
+ *        annua      | 69.99    | 99.99 | 149.99  |
+ *
+ *
+ * Monthly Pricing (€):
+ * | Tier | Adjust % | Standard | Pro   | Premium |
+ * | ---- | -------- | -------- | ----- | ------- |
+ * | 1    | -60%     | 2.79     | 3.99  | 5.99    |
+ * | 2    | -50%     | 3.49     | 4.99  | 7.49    |
+ * | 3    | -40%     | 4.19     | 5.99  | 8.99    |
+ * | 4    | -30%     | 4.89     | 6.99  | 10.49   |
+ * | 5    | -20%     | 5.59     | 7.99  | 11.99   |
+ * | 6    | -10%     | 6.29     | 8.99  | 13.49   |
+ * | 7    | 0%       | 6.99     | 9.99  | 14.99   |
+ * | 8    | +10%     | 7.69     | 10.99 | 16.49   |
+ * | 9    | +20%     | 8.39     | 11.99 | 17.99   |
+ * | 10   | +30%     | 9.09     | 12.99 | 19.49   |
+ * | 11   | +40%     | 9.79     | 13.99 | 20.99   |
+ *
+ * BASELINE          | 69.99    | 99.99  | 149.99  |
+ *
+ * Annual Pricing (€):
+ * | Tier | Adjust % | Standard | Pro    | Premium |
+ * | ---- | -------- | -------- | ------ | ------- |
+ * | 1    | -60%     | 27.99    | 39.99  | 59.99   |
+ * | 2    | -50%     | 34.99    | 49.99  | 74.99   |
+ * | 3    | -40%     | 41.99    | 56.99  | 85.99   |
+ * | 4    | -30%     | 48.99    | 69.99  | 104.99  |
+ * | 5    | -20%     | 55.99    | 79.99  | 119.99  |
+ * | 6    | -10%     | 62.99    | 89.99  | 134.99  |
+ * | 7    | 0%       | 69.99    | 99.99  | 149.99  |
+ * | 8    | +10%     | 76.99    | 109.99 | 164.99  |
+ * | 9    | +20%     | 83.99    | 119.99 | 179.99  |
+ * | 10   | +30%     | 90.99    | 129.99 | 194.99  |
+ * | 11   | +40%     | 97.99    | 139.99 | 209.99  |
+ */
 export const TIER_MULTIPLIERS: Record<PricingTier, number> = {
-    1: 1.2,  // 120%
-    2: 1.0,  // 100%
-    3: 0.9,  // 90%
-    4: 0.8,  // 80%
-    5: 0.6,  // 60%
-    6: 0.4,  // 40%
-    7: 0.3   // 30%
+    1: 0.4,  // -60%
+    2: 0.5,  // -50%
+    3: 0.6,  // -40%
+    4: 0.7,  // -30%
+    5: 0.8,  // -20%
+    6: 0.9,  // -10%
+    7: 1.0,  // 0% (Base)
+    8: 1.1,  // +10%
+    9: 1.2,  // +20%
+    10: 1.3, // +30%
+    11: 1.4  // +40%
 };
 
-// Simplified mapping based on World Bank GNI per capita / common SaaS regional pricing
+// Adjusted mapping based on the new 11-tier scale (Tier 7 = Base/High Income)
 export const COUNTRY_TIER_MAP: Record<string, PricingTier> = {
-    // Tier 1: Highest Income (120%)
-    'CH': 1, 'LI': 1, 'NO': 1, 'IS': 1, 'LU': 1, 'SG': 1, 'QA': 1,
+    // Highest income regions moved to Tiers 8-11
+    'CH': 9, 'SG': 9, 'NO': 9, 'IS': 9, 'LU': 9, 'LI': 9, 'QA': 9,
 
-    // Tier 2: High Income (100% - Base)
-    'US': 2, 'CA': 2, 'DE': 2, 'GB': 2, 'FR': 2, 'JP': 2, 'AU': 2, 'NZ': 2, 'IE': 2, 'AT': 2, 'BE': 2,
-    'NL': 2, 'SE': 2, 'DK': 2, 'FI': 2, 'IT': 2, 'ES': 2, 'KR': 2, 'IL': 2, 'HK': 2, 'AE': 2,
+    // Base Tier 7: High Income (100% - Base)
+    'US': 7, 'CA': 7, 'DE': 7, 'GB': 7, 'FR': 7, 'JP': 7, 'AU': 7, 'NZ': 7, 'IE': 7, 'AT': 7, 'BE': 7,
+    'NL': 7, 'SE': 7, 'DK': 7, 'FI': 7, 'IT': 7, 'ES': 7, 'KR': 7, 'IL': 7, 'HK': 7, 'AE': 7,
 
-    // Tier 3: Upper Middle (High) (90%)
-    'PL': 3, 'CZ': 3, 'SK': 3, 'HU': 3, 'GR': 3, 'PT': 3, 'EE': 3, 'LT': 3, 'LV': 3, 'HR': 3, 'SI': 3,
-    'CY': 3, 'MT': 3, 'SA': 3, 'KW': 3, 'CL': 3, 'UY': 3, 'RO': 3,
+    // Tier 6: Upper Middle (High) (-10%)
+    'PL': 6, 'CZ': 6, 'SK': 6, 'HU': 6, 'GR': 6, 'PT': 6, 'EE': 6, 'LT': 6, 'LV': 6, 'HR': 6, 'SI': 6,
+    'CY': 6, 'MT': 6, 'SA': 6, 'KW': 6, 'CL': 6, 'UY': 6, 'RO': 6,
 
-    // Tier 4: Upper Middle (Lower) (80%)
-    'BR': 4, 'MX': 4, 'TR': 4, 'TH': 4, 'MY': 4, 'BG': 4, 'KZ': 4, 'CN': 4, 'ME': 4, 'RS': 4, 'MK': 4,
-    'AL': 4, 'AZ': 4, 'AR': 4, 'CO': 4, 'PE': 4, 'ZA': 4,
+    // Tier 5: Upper Middle (Lower) (-20%)
+    'BR': 5, 'MX': 5, 'TR': 5, 'TH': 5, 'MY': 5, 'BG': 5, 'KZ': 5, 'CN': 5, 'ME': 5, 'RS': 5, 'MK': 5,
+    'AL': 5, 'AZ': 5, 'AR': 5, 'CO': 5, 'PE': 5, 'ZA': 5,
 
-    // Tier 5: Lower Middle (High) (60%)
-    'ID': 5, 'PH': 5, 'VN': 5, 'UA': 5, 'GE': 5, 'MA': 5, 'EG': 5, 'DZ': 5, 'JO': 5, 'LB': 5, 'IQ': 5,
-    'PY': 5, 'EC': 5, 'BO': 5, 'IN': 5,
+    // Tier 3: Lower Middle (High) (-40%)
+    'ID': 3, 'PH': 3, 'VN': 3, 'UA': 3, 'GE': 3, 'MA': 3, 'EG': 3, 'DZ': 3, 'JO': 3, 'LB': 3, 'IQ': 3,
+    'PY': 3, 'EC': 3, 'BO': 3, 'IN': 3,
 
-    // Tier 6: Lower Middle (Lower) (40%)
-    'PK': 6, 'BD': 6, 'NG': 6, 'KE': 6, 'GH': 6, 'ET': 6, 'TZ': 6, 'UG': 6, 'NP': 6, 'MM': 6, 'KH': 6,
-    'LA': 6, 'UZ': 6, 'TJ': 6, 'KG': 6,
-
-    // Tier 7: Low Income (30%)
-    'AF': 7, 'YE': 7, 'SY': 7, 'SD': 7, 'SS': 7, 'CD': 7, 'NE': 7, 'ML': 7, 'BF': 7, 'HT': 7, 'MG': 7,
+    // Tier 1: Lower Middle & Low Income ( -60%)
+    'PK': 1, 'BD': 1, 'NG': 1, 'KE': 1, 'GH': 1, 'ET': 1, 'TZ': 1, 'UG': 1, 'NP': 1, 'MM': 1, 'KH': 1,
+    'LA': 1, 'UZ': 1, 'TJ': 1, 'KG': 1, 'AF': 1, 'YE': 1, 'SY': 1, 'SD': 1, 'SS': 1, 'CD': 1, 'NE': 1,
+    'ML': 1, 'BF': 1, 'HT': 1, 'MG': 1,
 };
 
 export const getTierForCountry = (countryCode?: string | null): PricingTier => {
-    if (!countryCode) return 2; // Default to Tier 2
-    return COUNTRY_TIER_MAP[countryCode.toUpperCase()] || 2;
+    if (!countryCode) return 7; // Default to Tier 7
+    return COUNTRY_TIER_MAP[countryCode.toUpperCase()] || 7;
 };
