@@ -13,14 +13,21 @@ const inter = Inter({
   display: 'swap',
 });
 
-const title = 'Next.js Subscription Starter';
-const description = 'Brought to you by Vercel, Stripe, and Supabase.';
+const title = 'study.exe';
+const description = 'Kill your distractions. Reclaim your focus. Study or die trying.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(getURL()),
   title: title,
   description: description,
   openGraph: {
+    title: title,
+    description: description,
+    type: 'website',
+    siteName: 'study.exe'
+  },
+  twitter: {
+    card: 'summary_large_image',
     title: title,
     description: description
   }
