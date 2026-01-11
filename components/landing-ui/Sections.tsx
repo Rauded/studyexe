@@ -561,7 +561,7 @@ export function PricingSection({
     );
     const router = useRouter();
     const currentPath = usePathname();
-    const [billingInterval, setBillingInterval] = useState<BillingInterval>('month');
+    const [billingInterval, setBillingInterval] = useState<BillingInterval>('year');
     const [priceIdLoading, setPriceIdLoading] = useState<string>();
 
     const handleStripeCheckout = async (price: Price) => {
@@ -655,8 +655,8 @@ export function PricingSection({
                             minimumFractionDigits: 0
                         }).format((price?.unit_amount || 0) / 100);
 
-                        const isPopular = product.name?.toLowerCase().includes('killer') || product.name?.toLowerCase().includes('warrior');
-                        const isCurrent = subscription ? product.name === subscription?.prices?.products?.name : false;
+                        const isPopular = product.name?.toLowerCase().includes('pro');
+                        const isCurrent = subscription ? product.id === subscription?.prices?.products?.id : false;
 
                         return (
                             <ScrollAnimation key={product.id} animation="fade-in-up" delay={i * 100}>
@@ -679,6 +679,11 @@ export function PricingSection({
                                         <div className="flex items-baseline gap-1 mt-2">
                                             <span className="text-4xl font-bold text-white">{priceString}</span>
                                             <span className="text-muted-foreground">/{billingInterval}</span>
+                                            {billingInterval === 'year' && (
+                                                <Badge className="ml-2 bg-green-500/20 text-green-400 border-green-500/30">
+                                                    Best Value
+                                                </Badge>
+                                            )}
                                         </div>
                                         <p className="text-sm text-muted-foreground mt-2">{product.description}</p>
                                     </div>
@@ -700,16 +705,28 @@ export function PricingSection({
                                     <ul className="space-y-3">
                                         <li className="flex items-start gap-2 text-sm">
                                             <Check className="w-4 h-4 text-white mt-0.5 flex-shrink-0" />
-                                            <span className="text-muted-foreground">Unlimited focus sessions</span>
+                                            <span className="text-muted-foreground">
+                                                {product.name === 'Starter' ? 'Basic focus enforcement' : 'Nuclear-level app blocking'}
+                                            </span>
                                         </li>
                                         <li className="flex items-start gap-2 text-sm">
                                             <Check className="w-4 h-4 text-white mt-0.5 flex-shrink-0" />
-                                            <span className="text-muted-foreground">Nuclear app blocker</span>
+                                            <span className="text-muted-foreground">
+                                                {product.name === 'Starter' ? '1 device support' : 'Sync across all devices'}
+                                            </span>
                                         </li>
                                         <li className="flex items-start gap-2 text-sm">
                                             <Check className="w-4 h-4 text-white mt-0.5 flex-shrink-0" />
-                                            <span className="text-muted-foreground">ADHD mode algorithms</span>
+                                            <span className="text-muted-foreground">
+                                                {product.name === 'Elite' ? 'Priority human support' : 'ADHD mode algorithms'}
+                                            </span>
                                         </li>
+                                        {isPopular && (
+                                            <li className="flex items-start gap-2 text-sm">
+                                                <Check className="w-4 h-4 text-white mt-0.5 flex-shrink-0" />
+                                                <span className="text-muted-foreground font-medium text-white">Full eye-tracking analytics</span>
+                                            </li>
+                                        )}
                                     </ul>
                                 </div>
                             </ScrollAnimation>
