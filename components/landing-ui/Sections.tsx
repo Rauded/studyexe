@@ -107,7 +107,7 @@ export function Navbar({ user }: { user: User | null }) {
 
 // Hero Section
 export function HeroSection() {
-    const rotatingWords = ["procrastination", "distractions", "excuses", "social media", "your weakness"];
+    const rotatingWords = ["procrastination", "distractions", "excuses", "social media", "your weakness", "procrastination"];
 
     return (
         <section className="pt-32 pb-20 px-4 relative overflow-hidden aurora-bg">
