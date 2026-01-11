@@ -13,7 +13,7 @@ const inter = Inter({
   display: 'swap',
 });
 
-const title = 'study.exe / ADHD Focus Eye Tracking Distraction Destroyer';
+const title = 'study.exe // ADHD Focus Eye Tracking Distraction Destroyer';
 const description = 'Destroy your distractions. Reclaim your focus. Study or perish trying.';
 
 export const metadata: Metadata = {
