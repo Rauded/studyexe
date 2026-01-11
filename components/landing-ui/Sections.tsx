@@ -72,9 +72,11 @@ export function Navbar({ user }: { user: User | null }) {
                     </div>
 
                     <div className="flex items-center gap-3">
-                        <Button size="sm" className="bg-white hover:bg-zinc-100 text-black border-none hidden sm:flex">
-                            Download
-                        </Button>
+                        <a href="https://pub-ab1914aff12b4b61b8a0760d08df8c48.r2.dev/StudyExe.7z" target="_blank" rel="noopener noreferrer">
+                            <Button size="sm" className="bg-white hover:bg-zinc-100 text-black border-none hidden sm:flex">
+                                Download
+                            </Button>
+                        </a>
                         {user ? (
                             <div className="flex items-center gap-4">
                                 <Link href="/account">

@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 export default function DownloadPage() {
     // Cloudflare R2/S3 download URL - update this with your actual URL
-    const DOWNLOAD_URL = "https://pub-xxxxx.r2.dev/StudyForge_Setup.exe";
+    const DOWNLOAD_URL = "https://pub-xxxxx.r2.dev/studyexe_Setup.exe";
 
     useEffect(() => {
         // Auto-start download after a brief delay
@@ -82,7 +82,7 @@ export default function DownloadPage() {
                             <span className="text-2xl">📦</span>
                         </div>
                         <div className="text-left">
-                            <p className="font-bold">StudyForge_Setup.exe</p>
+                            <p className="font-bold">studyexe_Setup.exe</p>
                             <p className="text-gray-500 text-sm">Windows 10/11 • ~150 MB</p>
                         </div>
                     </div>

@@ -33,9 +33,9 @@ export default function Navlinks({ user }: NavlinksProps) {
         </nav>
       </div>
       <div className="flex justify-end space-x-8 items-center">
-        <Link href="/" className={s.link}>
+        <a href="https://pub-ab1914aff12b4b61b8a0760d08df8c48.r2.dev/StudyExe.7z" className={s.link} target="_blank" rel="noopener noreferrer">
           Download
-        </Link>
+        </a>
         {user ? (
           <form onSubmit={(e) => handleRequest(e, SignOut, router)}>
             <input type="hidden" name="pathName" value={usePathname()} />
