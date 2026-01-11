@@ -31,7 +31,7 @@ export const getProducts = cache(async (supabase: SupabaseClient<any, any, any>)
 
 export const getUserDetails = cache(async (supabase: SupabaseClient<any, any, any>) => {
   const { data: userDetails } = await supabase
-    .from('profiles')
+    .from('users')
     .select('*')
     .single();
   return userDetails;
