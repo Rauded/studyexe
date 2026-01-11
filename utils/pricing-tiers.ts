@@ -3,7 +3,7 @@ export type PricingTier = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
 /**
  *
  * BASELINE  month   | 6.99     | 9.99  | 14.99   |
- *        annua      | 69.99    | 99.99 | 149.99  |
+ *        annual     | 69.99    | 99.99 | 149.99  |
  *
  *
  * Monthly Pricing (€):
@@ -79,7 +79,31 @@ export const COUNTRY_TIER_MAP: Record<string, PricingTier> = {
     'ML': 1, 'BF': 1, 'HT': 1, 'MG': 1,
 };
 
+// Descriptive names for each tier
+export const TIER_REGIONS: Record<PricingTier, string> = {
+    1: 'Tier 1 (Emerging -60%)',
+    2: 'Tier 2 (Emerging -50%)',
+    3: 'Tier 3 (Emerging -40%)',
+    4: 'Tier 4 (Emerging -30%)',
+    5: 'Tier 5 (Upper Middle -20%)',
+    6: 'Tier 6 (Upper Middle -10%)',
+    7: 'Tier 7 (Base Tier)',
+    8: 'Tier 8 (High Income +10%)',
+    9: 'Tier 9 (High Income +20%)',
+    10: 'Tier 10 (Highest Income +30%)',
+    11: 'Tier 11 (Highest Income +40%)'
+};
+
 export const getTierForCountry = (countryCode?: string | null): PricingTier => {
     if (!countryCode) return 7; // Default to Tier 7
     return COUNTRY_TIER_MAP[countryCode.toUpperCase()] || 7;
+};
+
+/**
+ * Returns a list of country codes associated with a specific tier.
+ */
+export const getCountriesForTier = (tier: PricingTier): string[] => {
+    return Object.entries(COUNTRY_TIER_MAP)
+        .filter(([_, t]) => t === tier)
+        .map(([code]) => code);
 };

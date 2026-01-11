@@ -1,24 +1,24 @@
-
 import Stripe from 'stripe';
-import * as dotenv from 'dotenv';
 import path from 'path';
+import fs from 'fs';
 
-// Load env vars from .env.local
-dotenv.config({ path: path.resolve(process.cwd(), '.env.local') });
+// Simple fallback to read .env.local manually if STRIPE_SECRET_KEY is missing
+if (!process.env.STRIPE_SECRET_KEY) {
+    const envPath = path.resolve(process.cwd(), '.env.local');
+    if (fs.existsSync(envPath)) {
+        const envContent = fs.readFileSync(envPath, 'utf8');
+        const match = envContent.match(/^STRIPE_SECRET_KEY=(.*)$/m);
+        if (match) {
+            process.env.STRIPE_SECRET_KEY = match[1].trim();
+        }
+    }
+}
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
     apiVersion: '2023-10-16' as any
 });
 
-const TIER_MULTIPLIERS: Record<number, number> = {
-    1: 1.2,  // 120%
-    2: 1.0,  // 100% (Base)
-    3: 0.9,  // 90%
-    4: 0.8,  // 80%
-    5: 0.6,  // 60%
-    6: 0.4,  // 40%
-    7: 0.3   // 30%
-};
+import { TIER_MULTIPLIERS, TIER_REGIONS, getCountriesForTier, PricingTier } from '../utils/pricing-tiers';
 
 const PRODUCTS = [
     { id: 'prod_Tlx0IXZC7nzmQD', name: 'Standard' },
@@ -50,12 +50,16 @@ async function setup() {
         const baseLookupYearly = yearlyBase.lookup_key as string;
 
         for (const [tierStr, multiplier] of Object.entries(TIER_MULTIPLIERS)) {
-            const tier = parseInt(tierStr);
+            const tier = parseInt(tierStr) as PricingTier;
             if (tier === 7) continue; // Skip the base tier
+
+            const regionName = TIER_REGIONS[tier];
+            const countries = getCountriesForTier(tier).join(', ');
 
             // Create Monthly Price for this Tier
             const monthlyAmount = Math.floor((monthlyBase.unit_amount || 0) * multiplier);
             const monthlyLookup = `${baseLookupMonthly}_tier${tier}`;
+            const monthlyNickname = `${prod.name} Monthly - ${regionName}`;
 
             console.log(`   🔹 Tier ${tier} (${Math.round(multiplier * 100)}%): Monthly ${monthlyAmount} cents, Lookup: ${monthlyLookup}`);
 
@@ -67,15 +71,22 @@ async function setup() {
                     recurring: { interval: 'month' },
                     lookup_key: monthlyLookup,
                     transfer_lookup_key: true,
-                    metadata: { tier: tier.toString(), plan: 'monthly' }
+                    nickname: monthlyNickname,
+                    metadata: {
+                        tier: tier.toString(),
+                        plan: 'monthly',
+                        region: regionName,
+                        countries: countries.substring(0, 500) // Stripe metadata value limit is 500 chars
+                    }
                 });
             } catch (e: any) {
                 console.warn(`      ⚠️  Could not create monthly tier ${tier}: ${e.message}`);
             }
 
             // Create Yearly Price for this Tier
-            const yearlyAmount = Math.round((yearlyBase.unit_amount || 0) * multiplier);
+            const yearlyAmount = Math.floor((yearlyBase.unit_amount || 0) * multiplier);
             const yearlyLookup = `${baseLookupYearly}_tier${tier}`;
+            const yearlyNickname = `${prod.name} Yearly - ${regionName}`;
 
             console.log(`   🔹 Tier ${tier} (${Math.round(multiplier * 100)}%): Yearly ${yearlyAmount} cents, Lookup: ${yearlyLookup}`);
 
@@ -87,7 +98,13 @@ async function setup() {
                     recurring: { interval: 'year' },
                     lookup_key: yearlyLookup,
                     transfer_lookup_key: true,
-                    metadata: { tier: tier.toString(), plan: 'yearly' }
+                    nickname: yearlyNickname,
+                    metadata: {
+                        tier: tier.toString(),
+                        plan: 'yearly',
+                        region: regionName,
+                        countries: countries.substring(0, 500)
+                    }
                 });
             } catch (e: any) {
                 console.warn(`      ⚠️  Could not create yearly tier ${tier}: ${e.message}`);
@@ -96,6 +113,7 @@ async function setup() {
     }
 
     console.log('\n✅ Tiered pricing setup complete!');
+    console.log('🔗 View your products and prices here: https://dashboard.stripe.com/test/products');
 }
 
 setup().catch(console.error);
