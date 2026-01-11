@@ -694,11 +694,6 @@ export function PricingSection({
                                                     </Badge>
                                                 )}
                                             </div>
-                                            {billingInterval === 'year' && (
-                                                <div className="text-xs text-muted-foreground">
-                                                    {fullPriceString} billed annually
-                                                </div>
-                                            )}
                                         </div>
                                         <p className="text-sm text-muted-foreground mt-2">{product.description}</p>
                                     </div>
