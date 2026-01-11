@@ -435,78 +435,78 @@ html {
 
     0%,
     15% {
-        transform: translate3d(0, 0%, 0);
+        transform: translate3d(0, 0, 0);
         filter: blur(0);
         opacity: 1;
     }
 
     16.6% {
-        transform: translate3d(0, -10%, 0);
+        transform: translate3d(0, -0.2em, 0);
         filter: blur(2px);
         opacity: 0.8;
     }
 
     18%,
     31% {
-        transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -1.15em, 0);
         filter: blur(0);
         opacity: 1;
     }
 
     32.6% {
-        transform: translate3d(0, -110%, 0);
+        transform: translate3d(0, -1.35em, 0);
         filter: blur(2px);
         opacity: 0.8;
     }
 
     34%,
     47% {
-        transform: translate3d(0, -200%, 0);
+        transform: translate3d(0, -2.3em, 0);
         filter: blur(0);
         opacity: 1;
     }
 
     48.6% {
-        transform: translate3d(0, -210%, 0);
+        transform: translate3d(0, -2.5em, 0);
         filter: blur(2px);
         opacity: 0.8;
     }
 
     50%,
     63% {
-        transform: translate3d(0, -300%, 0);
+        transform: translate3d(0, -3.45em, 0);
         filter: blur(0);
         opacity: 1;
     }
 
     64.6% {
-        transform: translate3d(0, -310%, 0);
+        transform: translate3d(0, -3.65em, 0);
         filter: blur(2px);
         opacity: 0.8;
     }
 
     66%,
     79% {
-        transform: translate3d(0, -400%, 0);
+        transform: translate3d(0, -4.6em, 0);
         filter: blur(0);
         opacity: 1;
     }
 
     80.6% {
-        transform: translate3d(0, -410%, 0);
+        transform: translate3d(0, -4.8em, 0);
         filter: blur(2px);
         opacity: 0.8;
     }
 
     82%,
     95% {
-        transform: translate3d(0, -500%, 0);
+        transform: translate3d(0, -5.75em, 0);
         filter: blur(0);
         opacity: 1;
     }
 
     100% {
-        transform: translate3d(0, -500%, 0);
+        transform: translate3d(0, -5.75em, 0);
         filter: blur(0);
         opacity: 1;
     }

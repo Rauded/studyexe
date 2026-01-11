@@ -77,14 +77,14 @@ export function ScrollAnimation({
         animationDuration: `${duration}s`,
         animationDelay: `${delay}ms`,
         animationFillMode: 'forwards',
-        opacity: isVisible ? undefined : 0, // initially hidden
+        visibility: isVisible ? 'visible' as const : 'hidden' as const,
     };
 
     return (
         <div
             ref={elementRef}
-            className={`${className} ${isVisible && animation !== 'none' ? getAnimationClass() : 'opacity-0'}`}
-            style={isVisible ? style : { opacity: 0 }}
+            className={`${className} ${isVisible && animation !== 'none' ? getAnimationClass() : ''}`}
+            style={style}
         >
             {children}
         </div>

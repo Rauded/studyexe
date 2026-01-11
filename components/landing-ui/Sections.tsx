@@ -127,7 +127,7 @@ export function HeroSection() {
                 <h1 className="text-5xl sm:text-6xl md:text-7xl font-semibold leading-tight mb-6 text-white tracking-tight">
                     Kill your ADHD
                     <br />
-                    <span className="text-gradient-shimmer">destroying </span>
+                    <span className="text-gradient-shimmer">destroying your </span>
                     <span className="inline-block h-[1.15em] overflow-hidden align-bottom relative">
                         <span className="flex flex-col animate-text-rotate">
                             {rotatingWords.map((word, i) => (
