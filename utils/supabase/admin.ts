@@ -60,8 +60,9 @@ const upsertPriceRecord = async (
     unit_amount: price.unit_amount ?? null,
     interval: price.recurring?.interval ?? null,
     interval_count: price.recurring?.interval_count ?? null,
-    trial_period_days: price.recurring?.trial_period_days ?? TRIAL_PERIOD_DAYS
-  };
+    trial_period_days: price.recurring?.trial_period_days ?? TRIAL_PERIOD_DAYS,
+    lookup_key: price.lookup_key ?? null
+  } as any;
 
   const { error: upsertError } = await getSupabaseAdmin()
     .from('prices')

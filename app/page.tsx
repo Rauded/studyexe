@@ -7,8 +7,13 @@ import {
   getUser
 } from '@/utils/supabase/queries';
 
+import { cookies } from 'next/headers';
+
 export default async function PricingPage() {
   const supabase = createClient();
+  const cookieStore = cookies();
+  const tier = parseInt(cookieStore.get('pricing-tier')?.value || '2');
+
   const [user, products, subscription] = await Promise.all([
     getUser(supabase),
     getProducts(supabase),
@@ -21,6 +26,7 @@ export default async function PricingPage() {
         user={user}
         products={products ?? []}
         subscription={subscription}
+        tier={tier}
       />
       <Footer />
     </>

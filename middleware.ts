@@ -1,8 +1,22 @@
-import { type NextRequest } from 'next/server';
+import { type NextRequest, NextResponse } from 'next/server';
 import { updateSession } from '@/utils/supabase/middleware';
+import { getTierForCountry } from '@/utils/pricing-tiers';
 
 export async function middleware(request: NextRequest) {
-  return await updateSession(request);
+  // Detect country from Vercel headers or local development
+  const country = request.headers.get('x-vercel-ip-country') || 'US';
+  const tier = getTierForCountry(country);
+
+  const response = await updateSession(request);
+
+  // Set the tier in a cookie so it's accessible on the client/server
+  response.cookies.set('pricing-tier', tier.toString(), {
+    path: '/',
+    maxAge: 60 * 60 * 24 * 7, // 1 week
+    sameSite: 'lax',
+  });
+
+  return response;
 }
 
 export const config = {
