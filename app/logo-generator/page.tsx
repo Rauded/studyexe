@@ -16,6 +16,7 @@ export default function LogoGeneratorPage() {
     const [showIcon, setShowIcon] = useState(true);
     const [borderThickness, setBorderThickness] = useState(0);
     const [glow, setGlow] = useState(true);
+    const [contentType, setContentType] = useState<"icon" | "text">("icon");
 
     const handleDownloadSVG = () => {
         const svgElement = document.querySelector("#logo-export-area");
@@ -69,22 +70,36 @@ export default function LogoGeneratorPage() {
                         showIcon={showIcon}
                         borderThickness={borderThickness}
                         glow={glow}
+                        contentType={contentType}
                     />
 
                     {/* Controls Area */}
                     <div className="glass p-8 rounded-3xl border border-white/5 space-y-8 overflow-y-auto max-h-[700px] custom-scrollbar">
                         <BrandingControl label="Logo Components">
-                            <div className="grid grid-cols-2 gap-3">
-                                <BrandingToggle
-                                    label="Icon"
-                                    active={showIcon}
-                                    onClick={() => setShowIcon(!showIcon)}
-                                />
-                                <BrandingToggle
-                                    label="Text"
-                                    active={showText}
-                                    onClick={() => setShowText(!showText)}
-                                />
+                            <div className="space-y-4">
+                                <div className="flex items-center justify-between bg-white/5 p-3 rounded-xl border border-white/10">
+                                    <span className="text-sm font-medium">Logo Content</span>
+                                    <select
+                                        value={contentType}
+                                        onChange={(e) => setContentType(e.target.value as "icon" | "text")}
+                                        className="bg-zinc-900 border border-white/20 rounded-lg px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-green-500/50"
+                                    >
+                                        <option value="icon">Icon (SVG)</option>
+                                        <option value="text">Text (study)</option>
+                                    </select>
+                                </div>
+                                <div className="grid grid-cols-2 gap-3">
+                                    <BrandingToggle
+                                        label="Frame Icon"
+                                        active={showIcon}
+                                        onClick={() => setShowIcon(!showIcon)}
+                                    />
+                                    <BrandingToggle
+                                        label="Global Tagline"
+                                        active={showText}
+                                        onClick={() => setShowText(!showText)}
+                                    />
+                                </div>
                             </div>
                         </BrandingControl>
 
