@@ -348,46 +348,7 @@ export function AsciiArtSection() {
         };
     }, []);
 
-    // Auto-scroll to CTA when section comes into view
-    useEffect(() => {
-        const container = containerRef.current;
-        const cta = ctaRef.current;
-        if (!container || !cta) return;
-
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    // When section is 30% visible and we haven't scrolled yet
-                    if (entry.isIntersecting && entry.intersectionRatio > 0.3 && !hasScrolledRef.current) {
-                        hasScrolledRef.current = true;
-                        container.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                });
-            },
-            { threshold: [0.3] }
-        );
-
-        observer.observe(container);
-
-        // Reset the flag when user scrolls away
-        const resetObserver = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (!entry.isIntersecting) {
-                        hasScrolledRef.current = false;
-                    }
-                });
-            },
-            { threshold: [0] }
-        );
-
-        resetObserver.observe(container);
-
-        return () => {
-            observer.disconnect();
-            resetObserver.disconnect();
-        };
-    }, []);
+    // Auto-scroll logic removed to prevent scroll hijacking
 
     return (
         <section className="bg-black overflow-hidden flex flex-col items-center relative" ref={containerRef}>

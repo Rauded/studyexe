@@ -43,7 +43,7 @@ export function ScrollAnimation({
             },
             {
                 threshold,
-                rootMargin: '0px 0px -50px 0px', // Trigger slightly before fully in view
+                rootMargin: '0px 0px -100px 0px', // Trigger slightly earlier for smoother entry
             }
         );
 
@@ -56,6 +56,7 @@ export function ScrollAnimation({
             if (currentElement) {
                 observer.unobserve(currentElement);
             }
+            observer.disconnect();
         };
     }, [threshold]);
 
