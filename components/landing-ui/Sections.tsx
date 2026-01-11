@@ -44,8 +44,8 @@ interface SubscriptionWithProduct extends Subscription {
 type BillingInterval = 'lifetime' | 'year' | 'month';
 
 
-// Old Unused Navbar Component
-export function OldUnusedNavbar({ user }: { user: User | null }) {
+// Navbar Component
+export function Navbar({ user }: { user: User | null }) {
     const router = useRouter();
 
     return (
