@@ -33,7 +33,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
     return (
         <main className="min-h-screen bg-black text-white">
-            <Navbar user={user} />
+
 
             <div className="pt-32 pb-20 px-4 max-w-4xl mx-auto">
                 <Link href="/blog">

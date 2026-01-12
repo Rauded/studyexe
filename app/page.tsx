@@ -36,7 +36,7 @@ export default async function LandingPage() {
 
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <Navbar user={user} />
+
       {/* Loop 1: Hook -> Warning -> Feature */}
       <HeroSection />
       <StatsSection />

@@ -35,7 +35,7 @@ export default async function ChangelogPage() {
 
     return (
         <main className="min-h-screen bg-black text-white">
-            <Navbar user={user} />
+
 
             <div className="pt-32 pb-20 px-4 max-w-3xl mx-auto">
                 <div className="mb-16">

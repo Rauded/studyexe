@@ -9,7 +9,7 @@ export default async function AboutPage() {
 
     return (
         <main className="min-h-screen bg-black text-white">
-            <Navbar user={user} />
+
 
             <div className="pt-32 pb-20 px-4 max-w-4xl mx-auto">
                 <div className="text-center mb-16">
