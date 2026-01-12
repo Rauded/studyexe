@@ -33,7 +33,7 @@ export default async function BlogPage() {
                             <article className="flex flex-col h-full bg-zinc-900/20 border border-white/5 rounded-3xl overflow-hidden hover:border-emerald-500/20 transition-all hover:bg-zinc-900/40">
                                 {/* Placeholder for image */}
                                 <div className="h-48 bg-zinc-900/50 w-full flex items-center justify-center border-b border-white/5 group-hover:bg-zinc-900/80 transition-colors">
-                                    <MaterialIcon name="article" className="text-zinc-700 group-hover:text-zinc-500 transition-colors" size="2xl" />
+                                    <MaterialIcon name="article" className="text-zinc-700 group-hover:text-zinc-500 transition-colors" size="xl" />
                                 </div>
 
                                 <div className="p-6 flex-1 flex flex-col">
