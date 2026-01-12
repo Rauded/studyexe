@@ -20,7 +20,7 @@ export default async function BlogPage() {
                         StudyEXE Journal
                     </div>
                     <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tighter">
-                        Restoring <span className="text-emerald-500">Focus</span>
+                        Restoring <span className="text-white">Focus</span>
                     </h1>
                     <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                         Insights on neuroscience, productivity, and the war for your attention.
@@ -30,7 +30,7 @@ export default async function BlogPage() {
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {BLOG_POSTS.map((post, i) => (
                         <Link href={`/blog/${post.slug}`} key={i} className="group block h-full">
-                            <article className="flex flex-col h-full bg-zinc-900/20 border border-white/5 rounded-3xl overflow-hidden hover:border-emerald-500/20 transition-all hover:bg-zinc-900/40">
+                            <article className="flex flex-col h-full bg-zinc-900/20 border border-white/5 rounded-3xl overflow-hidden hover:border-white/20 transition-all hover:bg-zinc-900/40">
                                 {/* Placeholder for image */}
                                 <div className="h-48 bg-zinc-900/50 w-full flex items-center justify-center border-b border-white/5 group-hover:bg-zinc-900/80 transition-colors">
                                     <MaterialIcon name="article" className="text-zinc-700 group-hover:text-zinc-500 transition-colors" size="xl" />
@@ -38,11 +38,11 @@ export default async function BlogPage() {
 
                                 <div className="p-6 flex-1 flex flex-col">
                                     <div className="flex items-center justify-between mb-4">
-                                        <span className="text-xs font-mono text-emerald-500">{post.category}</span>
+                                        <span className="text-xs font-mono text-zinc-400">{post.category}</span>
                                         <span className="text-xs text-zinc-500">{post.readTime}</span>
                                     </div>
 
-                                    <h2 className="text-xl font-bold mb-3 group-hover:text-emerald-400 transition-colors leading-tight">
+                                    <h2 className="text-xl font-bold mb-3 group-hover:text-white transition-colors leading-tight">
                                         {post.title}
                                     </h2>
 

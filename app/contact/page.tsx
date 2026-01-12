@@ -8,7 +8,7 @@ export default function ContactPage() {
                 </p>
                 <div className="p-12 border border-zinc-800 rounded-2xl bg-zinc-900/20">
                     <p className="text-zinc-300">
-                        For support and inquiries: <a href="mailto:hello@studyexe.com" className="text-white hover:text-emerald-400 transition-colors">hello@studyexe.com</a>
+                        For support and inquiries: <a href="mailto:hello@studyexe.com" className="text-white hover:text-white/80 transition-colors">hello@studyexe.com</a>
                     </p>
                 </div>
             </div>

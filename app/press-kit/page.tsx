@@ -21,7 +21,7 @@ export default function PressPage() {
                                 type="email"
                                 id="email"
                                 placeholder="your.email@example.com"
-                                className="w-full px-4 py-3 bg-black/50 border border-zinc-800 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/50 text-white placeholder:text-zinc-600 transition-all"
+                                className="w-full px-4 py-3 bg-black/50 border border-zinc-800 rounded-xl focus:outline-none focus:ring-2 focus:ring-white/20 focus:border-white text-white placeholder:text-zinc-600 transition-all"
                                 required
                             />
                         </div>
@@ -34,7 +34,7 @@ export default function PressPage() {
                                 type="text"
                                 id="subject"
                                 placeholder="Media inquiry subject"
-                                className="w-full px-4 py-3 bg-black/50 border border-zinc-800 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/50 text-white placeholder:text-zinc-600 transition-all"
+                                className="w-full px-4 py-3 bg-black/50 border border-zinc-800 rounded-xl focus:outline-none focus:ring-2 focus:ring-white/20 focus:border-white text-white placeholder:text-zinc-600 transition-all"
                                 required
                             />
                         </div>
@@ -47,7 +47,7 @@ export default function PressPage() {
                                 id="message"
                                 rows={6}
                                 placeholder="Please provide details about your media inquiry, including deadline, outlet information, and specific questions you'd like answered..."
-                                className="w-full px-4 py-3 bg-black/50 border border-zinc-800 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/50 text-white placeholder:text-zinc-600 transition-all resize-none"
+                                className="w-full px-4 py-3 bg-black/50 border border-zinc-800 rounded-xl focus:outline-none focus:ring-2 focus:ring-white/20 focus:border-white text-white placeholder:text-zinc-600 transition-all resize-none"
                                 required
                             />
                         </div>

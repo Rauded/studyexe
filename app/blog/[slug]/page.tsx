@@ -46,7 +46,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <article>
                     <div className="mb-10 text-center">
                         <div className="flex items-center justify-center gap-4 mb-6 text-sm">
-                            <span className="text-emerald-500 font-mono uppercase tracking-wider">{post.category}</span>
+                            <span className="text-zinc-400 font-mono uppercase tracking-wider">{post.category}</span>
                             <span className="w-1 h-1 bg-zinc-700 rounded-full"></span>
                             <span className="text-zinc-500">{post.date}</span>
                             <span className="w-1 h-1 bg-zinc-700 rounded-full"></span>
