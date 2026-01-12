@@ -379,9 +379,10 @@ export function AsciiArtSection() {
             <canvas ref={canvasRef} className="cursor-crosshair max-w-full" />
 
             {/* Links Overlay */}
-            <div className="absolute right-6 bottom-8 md:right-12 md:bottom-8 text-right z-20">
-                <h3 className="text-white font-bold mb-6 tracking-widest text-xl">study.exe</h3>
-                <div className="flex flex-col gap-3">
+            {/* Links Overlay */}
+            <div className="absolute top-4 right-4 md:top-auto md:right-12 md:bottom-8 text-right z-20 max-w-[80vw] md:max-w-none">
+                <h3 className="text-white font-bold mb-3 md:mb-6 tracking-widest text-xl hidden md:block">study.exe</h3>
+                <div className="flex flex-wrap justify-end gap-x-4 gap-y-2 md:flex-col md:gap-3">
                     {[
                         { name: 'Download', href: DOWNLOAD_LINK },
                         { name: 'Blog', href: '/blog' },
