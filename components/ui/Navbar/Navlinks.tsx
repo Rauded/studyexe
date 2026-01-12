@@ -7,6 +7,7 @@ import Logo from '@/components/icons/Logo';
 import { usePathname, useRouter } from 'next/navigation';
 import { getRedirectMethod } from '@/utils/auth-helpers/settings';
 import s from './Navbar.module.css';
+import { DOWNLOAD_LINK } from '@/utils/constants';
 
 interface NavlinksProps {
   user?: any;
@@ -35,12 +36,6 @@ export default function Navlinks({ user }: NavlinksProps) {
           )}
         </nav>
       </div>
-      import {DOWNLOAD_LINK} from '@/utils/constants';
-
-      // ... imports
-
-      // ...
-
       <div className="flex justify-end space-x-8 items-center">
         <a href={DOWNLOAD_LINK} className={s.link} target="_blank" rel="noopener noreferrer">
           Download

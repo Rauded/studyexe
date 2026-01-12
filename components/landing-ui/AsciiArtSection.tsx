@@ -5,6 +5,7 @@ import { Button } from "./button";
 import { MaterialIcon } from "./MaterialIcon";
 import { ScrollAnimation } from "../ui/ScrollAnimation";
 import Link from "next/link";
+import { DOWNLOAD_LINK } from "@/utils/constants";
 
 const ASCII_ART = `
 :::::---:-:::::::.:-::--:-::::::----:::::::::::::::::::::::::::::::::::::::::::::.:..:::::::::..::::::::::::.:::::...................::::::::::::::::::::--------::::::::::::::::::::::-:::::::::::::::::::::::....  .......:.:......::::.:......::::::::::::::.......:::::::::::...
@@ -362,10 +363,6 @@ export function AsciiArtSection() {
                             <h2 className="text-5xl md:text-7xl font-bold mb-8 tracking-tighter">
                                 <span className="text-gradient">Or Die Trying.</span>
                             </h2>
-
-                            import {DOWNLOAD_LINK} from "@/utils/constants";
-
-                            // ...
 
                             <a href={DOWNLOAD_LINK} download>
                                 <Button size="lg" className="bg-white hover:bg-zinc-100 text-black text-lg px-8 gap-2 rounded-xl">
