@@ -483,7 +483,7 @@ export function FeaturesSection() {
 export function TestimonialsSection() {
     const testimonials = [
         {
-            name: "Alex Chen",
+            name: "Michal Hvižďak",
             text: "I have severe ADHD. This app literally saved my career. Went from 2 hours of focus to 8. I'm not joking.",
         },
         {

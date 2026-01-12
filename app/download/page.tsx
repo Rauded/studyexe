@@ -8,9 +8,8 @@ export default function DownloadPage() {
     // Cloudflare R2/S3 download URL
 
     useEffect(() => {
-        // Auto-start download after a brief delay
         const timer = setTimeout(() => {
-            window.location.href = DOWNLOAD_URL;
+            window.location.href = DOWNLOAD_LINK;
         }, 1500);
         return () => clearTimeout(timer);
     }, []);
@@ -67,7 +66,7 @@ export default function DownloadPage() {
                     <p className="text-gray-400 max-w-md mx-auto">
                         The installer should begin automatically. If it doesn't,{" "}
                         <a
-                            href={DOWNLOAD_URL}
+                            href={DOWNLOAD_LINK}
                             className="text-[#30D158] hover:underline font-medium"
                         >
                             click here to download manually
