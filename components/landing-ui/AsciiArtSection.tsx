@@ -378,6 +378,31 @@ export function AsciiArtSection() {
             {/* ASCII Art Canvas */}
             <canvas ref={canvasRef} className="cursor-crosshair max-w-full" />
 
+            {/* Links Overlay */}
+            <div className="hidden md:block absolute right-12 bottom-8 text-right z-20">
+                <h3 className="text-white font-bold mb-6 tracking-widest text-xl">study.exe</h3>
+                <div className="flex flex-col gap-3">
+                    {[
+                        { name: 'Download', href: '/download' },
+                        { name: 'Docs', href: '#' },
+                        { name: 'Blog', href: '/blog' },
+                        { name: 'About', href: '/about' },
+                        { name: 'Press Kit', href: '#' },
+                        { name: 'Careers', href: '#' },
+                        { name: 'Contact', href: '#' }
+                    ].map((link) => (
+                        <Link
+                            key={link.name}
+                            href={link.href}
+                            className="text-zinc-500 hover:text-white transition-colors text-xs uppercase tracking-wider group flex items-center justify-end gap-2"
+                        >
+                            <span className="group-hover:-translate-x-1 transition-transform duration-200">{link.name}</span>
+                            <span>→</span>
+                        </Link>
+                    ))}
+                </div>
+            </div>
+
             {/* Fade to black at bottom */}
             <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none" />
         </section>
