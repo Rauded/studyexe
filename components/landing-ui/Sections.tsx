@@ -60,18 +60,18 @@ export function Navbar({ user }: { user: User | null }) {
                     </Link>
 
                     <div className="hidden md:flex items-center gap-8">
-                        <a href="#features" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
+                        <Link href="/#features" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
                             Features
-                        </a>
-                        <a href="#how-it-works" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
+                        </Link>
+                        <Link href="/#how-it-works" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
                             How it works
-                        </a>
-                        <a href="#pricing" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
+                        </Link>
+                        <Link href="/#pricing" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
                             Pricing
-                        </a>
-                        <a href="#faq" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
+                        </Link>
+                        <Link href="/#faq" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
                             FAQ
-                        </a>
+                        </Link>
                     </div>
 
                     <div className="flex items-center gap-3">
