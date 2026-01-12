@@ -383,7 +383,7 @@ export function AsciiArtSection() {
                 <h3 className="text-white font-bold mb-6 tracking-widest text-xl">study.exe</h3>
                 <div className="flex flex-col gap-3">
                     {[
-                        { name: 'Download', href: '/download' },
+                        { name: 'Download', href: DOWNLOAD_LINK },
                         { name: 'Blog', href: '/blog' },
                         { name: 'About', href: '/about' },
                         { name: 'Press Kit', href: '/press-kit' },
@@ -391,16 +391,33 @@ export function AsciiArtSection() {
                         { name: 'Contact', href: '/contact' },
                         { name: 'Privacy Policy', href: '/privacy-policy' },
                         { name: 'Terms of Use', href: '/terms-of-use' }
-                    ].map((link) => (
-                        <Link
-                            key={link.name}
-                            href={link.href}
-                            className="text-zinc-500 hover:text-white transition-colors text-xs uppercase tracking-wider group flex items-center justify-end gap-2"
-                        >
-                            <span className="group-hover:-translate-x-1 transition-transform duration-200">{link.name}</span>
-                            <span>→</span>
-                        </Link>
-                    ))}
+                    ].map((link) => {
+                        const isExternal = link.href.startsWith('http');
+                        if (isExternal) {
+                            return (
+                                <a
+                                    key={link.name}
+                                    href={link.href}
+                                    className="text-zinc-500 hover:text-white transition-colors text-xs uppercase tracking-wider group flex items-center justify-end gap-2"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <span className="group-hover:-translate-x-1 transition-transform duration-200">{link.name}</span>
+                                    <span>→</span>
+                                </a>
+                            );
+                        }
+                        return (
+                            <Link
+                                key={link.name}
+                                href={link.href}
+                                className="text-zinc-500 hover:text-white transition-colors text-xs uppercase tracking-wider group flex items-center justify-end gap-2"
+                            >
+                                <span className="group-hover:-translate-x-1 transition-transform duration-200">{link.name}</span>
+                                <span>→</span>
+                            </Link>
+                        );
+                    })}
                 </div>
             </div>
 

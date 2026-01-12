@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation';
 import { MaterialIcon } from "@/components/landing-ui/MaterialIcon";
 import Link from "next/link";
 import { Button } from "@/components/landing-ui/button";
+import { DOWNLOAD_LINK } from "@/utils/constants";
 
 interface BlogPostPageProps {
     params: {
@@ -68,11 +69,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
                 <div className="mt-20 pt-10 border-t border-white/5 text-center">
                     <p className="text-zinc-500 mb-6">Ready to stop reading and start doing?</p>
-                    <Link href="/download">
+                    <a href={DOWNLOAD_LINK}>
                         <Button className="bg-white hover:bg-zinc-200 text-black rounded-full px-8 h-12 text-base font-semibold">
                             Download StudyEXE
                         </Button>
-                    </Link>
+                    </a>
                 </div>
             </div>
         </main>
