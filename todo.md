@@ -18,3 +18,6 @@
 - Tagline: "Study or Die"
 - Key messaging: Forces you to study, blocks distractions, no escape
 we doing good
+
+
+POP UP notification halfway through scrolling askin for EMAIL, OFFERING pdf or FREE THEME or SKIN or SOMETHING, Free theme coupon code.
