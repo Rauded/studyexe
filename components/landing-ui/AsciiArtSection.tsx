@@ -363,7 +363,11 @@ export function AsciiArtSection() {
                                 <span className="text-gradient">Or Die Trying.</span>
                             </h2>
 
-                            <a href="https://pub-ab1914aff12b4b61b8a0760d08df8c48.r2.dev/StudyExe.7z" download>
+                            import {DOWNLOAD_LINK} from "@/utils/constants";
+
+                            // ...
+
+                            <a href={DOWNLOAD_LINK} download>
                                 <Button size="lg" className="bg-white hover:bg-zinc-100 text-black text-lg px-8 gap-2 rounded-xl">
                                     <MaterialIcon name="download" className="text-black" />
                                     Download StudyEXE

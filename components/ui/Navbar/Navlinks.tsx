@@ -35,8 +35,14 @@ export default function Navlinks({ user }: NavlinksProps) {
           )}
         </nav>
       </div>
+      import {DOWNLOAD_LINK} from '@/utils/constants';
+
+      // ... imports
+
+      // ...
+
       <div className="flex justify-end space-x-8 items-center">
-        <a href="https://pub-ab1914aff12b4b61b8a0760d08df8c48.r2.dev/StudyExe.7z" className={s.link} target="_blank" rel="noopener noreferrer">
+        <a href={DOWNLOAD_LINK} className={s.link} target="_blank" rel="noopener noreferrer">
           Download
         </a>
         {user ? (

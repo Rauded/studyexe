@@ -27,6 +27,7 @@ import { SignOut } from "@/utils/auth-helpers/server";
 import { handleRequest } from "@/utils/auth-helpers/client";
 import Link from "next/link";
 import { ScrollAnimation } from "../ui/ScrollAnimation";
+import { DOWNLOAD_LINK } from "@/utils/constants";
 
 type Subscription = Tables<'subscriptions'>;
 type Product = Tables<'products'>;
@@ -72,7 +73,7 @@ export function Navbar({ user }: { user: User | null }) {
                     </div>
 
                     <div className="flex items-center gap-3">
-                        <a href="https://pub-ab1914aff12b4b61b8a0760d08df8c48.r2.dev/StudyExe.7z" download>
+                        <a href={DOWNLOAD_LINK} download>
                             <Button size="sm" className="bg-white hover:bg-zinc-100 text-black border-none hidden sm:flex">
                                 Download
                             </Button>
@@ -156,7 +157,7 @@ export function HeroSection() {
                             placeholder="Enter your email for download link"
                             className="flex-1 bg-transparent border-none outline-none text-sm py-3 px-2 text-white placeholder:text-muted-foreground"
                         />
-                        <a href="https://pub-ab1914aff12b4b61b8a0760d08df8c48.r2.dev/StudyExe.7z" download>
+                        <a href={DOWNLOAD_LINK} download>
                             <Button className="bg-white hover:bg-zinc-100 text-black gap-2 btn-premium rounded-xl">
                                 <MaterialIcon name="target" className="text-black" size="sm" />
                                 Kill ADHD
@@ -345,7 +346,7 @@ export function NoMercySection() {
                         <p className="text-muted-foreground text-lg leading-relaxed mb-8">
                             We don't care about your excuses. We care about your future. That's why we built a digital prison you can't escape from physically.
                         </p>
-                        <a href="https://pub-ab1914aff12b4b61b8a0760d08df8c48.r2.dev/StudyExe.7z" download>
+                        <a href={DOWNLOAD_LINK} download>
                             <Button className="bg-red-600 hover:bg-red-700 text-white border-none rounded-xl h-12 px-8">
                                 I Accept The Challenge
                             </Button>

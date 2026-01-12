@@ -2,9 +2,10 @@
 
 import { useEffect } from "react";
 
+import { DOWNLOAD_LINK } from "@/utils/constants";
+
 export default function DownloadPage() {
-    // Cloudflare R2/S3 download URL - update this with your actual URL
-    const DOWNLOAD_URL = "https://pub-ab1914aff12b4b61b8a0760d08df8c48.r2.dev/StudyExe.7z";
+    // Cloudflare R2/S3 download URL
 
     useEffect(() => {
         // Auto-start download after a brief delay
