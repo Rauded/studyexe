@@ -384,12 +384,13 @@ export function AsciiArtSection() {
                 <div className="flex flex-col gap-3">
                     {[
                         { name: 'Download', href: '/download' },
-                        { name: 'Docs', href: '#' },
                         { name: 'Blog', href: '/blog' },
                         { name: 'About', href: '/about' },
-                        { name: 'Press Kit', href: '#' },
-                        { name: 'Careers', href: '#' },
-                        { name: 'Contact', href: '#' }
+                        { name: 'Press Kit', href: '/press-kit' },
+                        { name: 'Careers', href: '/careers' },
+                        { name: 'Contact', href: '/contact' },
+                        { name: 'Privacy Policy', href: '/privacy-policy' },
+                        { name: 'Terms of Use', href: '/terms-of-use' }
                     ].map((link) => (
                         <Link
                             key={link.name}
