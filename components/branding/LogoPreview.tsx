@@ -61,19 +61,11 @@ export const LogoPreview = ({
                 >
                     {contentType === "icon" ? (
                         showIcon && (
-                            <svg
-                                viewBox="0 0 32 32"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                                style={{ width: "60%", height: "60%" }}
-                            >
-                                <path
-                                    fillRule="evenodd"
-                                    clipRule="evenodd"
-                                    d="M17.6482 10.1305L15.8785 7.02583L7.02979 22.5499H10.5278L17.6482 10.1305ZM19.8798 14.0457L18.11 17.1983L19.394 19.4511H16.8453L15.1056 22.5499H24.7272L19.8798 14.0457Z"
-                                    fill={primaryColor}
-                                />
-                            </svg>
+                            <img
+                                src="/logo.png"
+                                alt="Logo Preview"
+                                className="w-[60%] h-[60%] object-contain rounded-full"
+                            />
                         )
                     ) : (
                         <div

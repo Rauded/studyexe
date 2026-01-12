@@ -30,6 +30,11 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: title,
     description: description
+  },
+  icons: {
+    icon: '/studyexe_logo_white_on_black.svg',
+    shortcut: '/studyexe_logo_white_on_black.svg',
+    apple: '/studyexe_logo_white_on_black.svg',
   }
 };
 
@@ -41,6 +46,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
         />
+        <link rel="icon" href="/studyexe_logo_white_on_black.svg" type="image/svg+xml" />
       </head>
       <body className={`${inter.className} bg-black font-light`}>
         <div className="fixed inset-0 bg-matrix-grid z-[-1]" />
