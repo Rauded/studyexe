@@ -379,7 +379,7 @@ export function AsciiArtSection() {
             <canvas ref={canvasRef} className="cursor-crosshair max-w-full" />
 
             {/* Links Overlay */}
-            <div className="hidden md:block absolute right-12 bottom-8 text-right z-20">
+            <div className="absolute right-6 bottom-8 md:right-12 md:bottom-8 text-right z-20">
                 <h3 className="text-white font-bold mb-6 tracking-widest text-xl">study.exe</h3>
                 <div className="flex flex-col gap-3">
                     {[

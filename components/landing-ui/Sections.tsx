@@ -171,7 +171,7 @@ export function HeroSection() {
                 {/* Social Proof */}
                 <div className="flex flex-wrap items-center justify-center gap-6 mt-8 text-sm text-muted-foreground">
                     <span className="flex items-center gap-2">
-                        <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+                        <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
                         <span className="font-light">12,847 active warriors</span>
                     </span>
                     <span className="text-white font-medium">8.4M hours reclaimed</span>
@@ -295,7 +295,7 @@ export function TruthSection() {
                 <ScrollAnimation animation="fade-in-up" delay={300}>
                     <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter text-right">
                         Lock in <br />
-                        <span className="text-emerald-500">your focus</span>
+                        <span className="text-white">your focus</span>
                     </h2>
                 </ScrollAnimation>
 
@@ -619,7 +619,7 @@ export function PricingSection({
                     <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">Simple, brutal pricing</h2>
                     <p className="text-muted-foreground mb-8">Choose your weapon. Cancel anytime (if you dare).</p>
                     {tier !== 7 && (
-                        <div className="mb-4 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium">
+                        <div className="mb-4 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white text-xs font-medium">
                             Localized Pricing Active (Tier {tier})
                         </div>
                     )}
