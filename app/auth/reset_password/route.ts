@@ -26,9 +26,12 @@ export async function GET(request: NextRequest) {
   }
 
   // URL to redirect to after sign in process completes
+  const next = requestUrl.searchParams.get('next');
+  const nextParam = next ? `?next=${encodeURIComponent(next)}` : '';
+
   return NextResponse.redirect(
     getStatusRedirect(
-      `${requestUrl.origin}/signin/update_password`,
+      `${requestUrl.origin}/signin/update_password${nextParam}`,
       'You are now signed in.',
       'Please enter a new password for your account.'
     )

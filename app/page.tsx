@@ -22,8 +22,20 @@ import {
 } from '@/utils/supabase/queries';
 
 import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
-export default async function LandingPage() {
+export default async function LandingPage({
+  searchParams
+}: {
+  searchParams: { code?: string; next?: string };
+}) {
+  if (searchParams.code) {
+    const nextPath = searchParams.next
+      ? `&next=${encodeURIComponent(searchParams.next)}`
+      : '';
+    return redirect(`/auth/callback?code=${searchParams.code}${nextPath}`);
+  }
+
   const supabase = createClient();
   const cookieStore = cookies();
   const tier = parseInt(cookieStore.get('pricing-tier')?.value || '7');

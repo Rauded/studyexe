@@ -22,7 +22,7 @@ export default async function SignIn({
   searchParams
 }: {
   params: { id: string };
-  searchParams: { disable_button: boolean };
+  searchParams: { disable_button: boolean; next: string };
 }) {
   const { allowOauth, allowEmail, allowPassword } = getAuthTypes();
   const viewTypes = getViewTypes();
@@ -38,7 +38,8 @@ export default async function SignIn({
     const preferredSignInView =
       cookies().get('preferredSignInView')?.value || null;
     viewProp = getDefaultSignInView(preferredSignInView);
-    return redirect(`/signin/${viewProp}`);
+    const next = searchParams.next ? `?next=${encodeURIComponent(searchParams.next)}` : '';
+    return redirect(`/signin/${viewProp}${next}`);
   }
 
   // Check if the user is already logged in and redirect to the account page if so

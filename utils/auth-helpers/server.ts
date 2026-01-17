@@ -34,7 +34,8 @@ export async function SignOut(formData: FormData) {
 
 export async function signInWithEmail(formData: FormData) {
   const cookieStore = cookies();
-  const callbackURL = getURL('/auth/callback');
+  const next = String(formData.get('next') || '');
+  const callbackURL = getURL(`/auth/callback${next ? `?next=${encodeURIComponent(next)}` : ''}`);
 
   const email = String(formData.get('email')).trim();
   let redirectPath: string;
@@ -87,7 +88,8 @@ export async function signInWithEmail(formData: FormData) {
 }
 
 export async function requestPasswordUpdate(formData: FormData) {
-  const callbackURL = getURL('/auth/reset_password');
+  const next = String(formData.get('next') || '');
+  const callbackURL = getURL(`/auth/reset_password${next ? `?next=${encodeURIComponent(next)}` : ''}`);
 
   // Get form data
   const email = String(formData.get('email')).trim();
@@ -135,6 +137,7 @@ export async function signInWithPassword(formData: FormData) {
   const cookieStore = cookies();
   const email = String(formData.get('email')).trim();
   const password = String(formData.get('password')).trim();
+  const next = String(formData.get('next') || '/');
   let redirectPath: string;
 
   const supabase = createClient();
@@ -151,7 +154,7 @@ export async function signInWithPassword(formData: FormData) {
     );
   } else if (data.user) {
     cookieStore.set('preferredSignInView', 'password_signin', { path: '/' });
-    redirectPath = getStatusRedirect('/', 'Success!', 'You are now signed in.');
+    redirectPath = getStatusRedirect(next, 'Success!', 'You are now signed in.');
   } else {
     redirectPath = getErrorRedirect(
       '/signin/password_signin',
@@ -194,7 +197,8 @@ export async function signUp(formData: FormData) {
       error.message
     );
   } else if (data.session) {
-    redirectPath = getStatusRedirect('/', 'Success!', 'You are now signed in.');
+    const next = String(formData.get('next') || '/');
+    redirectPath = getStatusRedirect(next, 'Success!', 'You are now signed in.');
   } else if (
     data.user &&
     data.user.identities &&
@@ -225,39 +229,31 @@ export async function signUp(formData: FormData) {
 export async function updatePassword(formData: FormData) {
   const password = String(formData.get('password')).trim();
   const passwordConfirm = String(formData.get('passwordConfirm')).trim();
+  const next = String(formData.get('next') || '/');
   let redirectPath: string;
 
-  // Check that the password and confirmation match
+  const supabase = createClient();
+  const { error } = await supabase.auth.updateUser({
+    password: password
+  });
+
   if (password !== passwordConfirm) {
     redirectPath = getErrorRedirect(
       '/signin/update_password',
-      'Your password could not be updated.',
-      'Passwords do not match.'
+      'Passwords do not match.',
+      'Please try again.'
     );
-  }
-
-  const supabase = createClient();
-  const { error, data } = await supabase.auth.updateUser({
-    password
-  });
-
-  if (error) {
+  } else if (error) {
     redirectPath = getErrorRedirect(
       '/signin/update_password',
-      'Your password could not be updated.',
+      'Password update failed.',
       error.message
     );
-  } else if (data.user) {
+  } else {
     redirectPath = getStatusRedirect(
-      '/',
+      next,
       'Success!',
       'Your password has been updated.'
-    );
-  } else {
-    redirectPath = getErrorRedirect(
-      '/signin/update_password',
-      'Hmm... Something went wrong.',
-      'Your password could not be updated.'
     );
   }
 

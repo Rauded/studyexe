@@ -26,6 +26,12 @@ export async function GET(request: NextRequest) {
   }
 
   // URL to redirect to after sign in process completes
+  const next = requestUrl.searchParams.get('next');
+
+  if (next) {
+    return NextResponse.redirect(`${requestUrl.origin}${next}`);
+  }
+
   return NextResponse.redirect(
     getStatusRedirect(
       `${requestUrl.origin}/account`,

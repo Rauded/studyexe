@@ -15,6 +15,7 @@ export default function UpdatePassword({
 }: UpdatePasswordProps) {
   const router = redirectMethod === 'client' ? useRouter() : null;
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const next = typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('next') : null;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     setIsSubmitting(true); // Disable the button while the request is being handled
@@ -29,6 +30,7 @@ export default function UpdatePassword({
         className="mb-4"
         onSubmit={(e) => handleSubmit(e)}
       >
+        <input type="hidden" name="next" value={next || ''} />
         <div className="grid gap-2">
           <div className="grid gap-1">
             <label htmlFor="password">New Password</label>

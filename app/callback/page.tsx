@@ -1,35 +1,46 @@
 'use client';
 
 import { useEffect } from 'react';
+import { createClient } from '@/utils/supabase/client';
 
-/**
- * AuthCallback Component
- *
- * This page handles the redirect back to the local StudyExe application
- * after a successful authentication flow on the website.
- * It extracts Supabase tokens from the URL hash and passes them to
- * the local server at http://localhost:54321.
- */
 export default function AuthCallback() {
     useEffect(() => {
-        // Extract tokens from the URL hash (Supabase default behavior for implicit flow)
-        const hash = window.location.hash.substring(1);
-        const params = new URLSearchParams(hash);
+        const handleRedirect = async () => {
+            // 1. Try to extract from URL hash first (Implicit Flow)
+            const hash = window.location.hash.substring(1);
+            const hashParams = new URLSearchParams(hash);
+            let accessToken = hashParams.get('access_token');
+            let refreshToken = hashParams.get('refresh_token');
 
-        const accessToken = params.get('access_token');
-        const refreshToken = params.get('refresh_token');
-
-        if (accessToken) {
-            // Redirect to the local StudyExe app
-            // We pass the tokens as query parameters to our local server
-            const localRedirectUrl = new URL('http://localhost:54321/callback');
-            localRedirectUrl.searchParams.set('access_token', accessToken);
-            if (refreshToken) {
-                localRedirectUrl.searchParams.set('refresh_token', refreshToken);
+            // 2. If not in hash, try to get from Supabase session (Code Exchange Flow)
+            if (!accessToken) {
+                const supabase = createClient();
+                const { data: { session } } = await supabase.auth.getSession();
+                if (session) {
+                    accessToken = session.access_token;
+                    refreshToken = session.refresh_token;
+                }
             }
 
-            window.location.href = localRedirectUrl.toString();
-        }
+            if (accessToken) {
+                const localRedirectUrl = new URL('http://localhost:54321/callback');
+                localRedirectUrl.searchParams.set('access_token', accessToken);
+                if (refreshToken) {
+                    localRedirectUrl.searchParams.set('refresh_token', refreshToken);
+                }
+
+                // Also helpful to pass the user ID if available
+                const supabase = createClient();
+                const { data: { user } } = await supabase.auth.getUser();
+                if (user) {
+                    localRedirectUrl.searchParams.set('user_id', user.id);
+                }
+
+                window.location.href = localRedirectUrl.toString();
+            }
+        };
+
+        handleRedirect();
     }, []);
 
     return (
