@@ -50,7 +50,7 @@ export default async function SignIn({
   } = await supabase.auth.getUser();
 
   if (user && viewProp !== 'update_password') {
-    return redirect('/');
+    return redirect(searchParams.next || '/');
   } else if (!user && viewProp === 'update_password') {
     return redirect('/signin');
   }
