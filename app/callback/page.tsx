@@ -3,6 +3,8 @@
 import { useEffect } from 'react';
 import { createClient } from '@/utils/supabase/client';
 
+
+//wowzes
 export default function AuthCallback() {
     useEffect(() => {
         const handleRedirect = async () => {
