@@ -28,7 +28,7 @@ export async function GET(request: NextRequest) {
     const next = requestUrl.searchParams.get('next');
 
     // If we're redirecting to the callback page, pass the tokens in the hash
-    if (next && next === '/callback' && data?.session) {
+    if (next && next.startsWith('/callback') && data?.session) {
       const { access_token, refresh_token } = data.session;
       const redirectUrl = new URL(`${requestUrl.origin}${next}`);
       // Supabase / Google auth returns tokens in hash, so we mimic that structure
