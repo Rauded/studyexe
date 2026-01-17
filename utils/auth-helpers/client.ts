@@ -34,8 +34,15 @@ export async function signInWithOAuth(e: React.FormEvent<HTMLFormElement>) {
 
   // Create client-side supabase client and call signInWithOAuth
   const supabase = createClient();
-  const next = new URLSearchParams(window.location.search).get('next');
-  const redirectURL = getURL(`/auth/callback${next ? `?next=${encodeURIComponent(next)}` : ''}`);
+
+  // 1. Get the 'next' parameter from the current URL (?next=/callback)
+  const searchParams = new URLSearchParams(window.location.search);
+  const next = searchParams.get('next') || '/account';
+
+  // 2. Tell Supabase to redirect back to your website's HANDOVER logic
+  // We explicitly use window.location.origin to ensure the absolute URL is correct
+  const redirectURL = `${window.location.origin}/auth/callback?next=${encodeURIComponent(next)}`;
+
   await supabase.auth.signInWithOAuth({
     provider: provider,
     options: {
