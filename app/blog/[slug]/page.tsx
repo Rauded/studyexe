@@ -29,9 +29,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         notFound();
     }
 
-    const supabase = createClient();
-    const user = await getUser(supabase);
-
     return (
         <main className="min-h-screen bg-black text-white">
 
